@@ -11,7 +11,13 @@ class IndexController extends BaseController
   {
     parent::initialize();
   }
-  
+  /**
+   * 入口控制器
+   *
+   * @return void
+   * @Author Liunan naiu@nnit.com
+   * @DateTime 2021-05-06
+   */
   public function index()
   {
     // echo $this->_role;
