@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <style>
+    .channel span{margin: 0 2px;cursor: pointer;}
+    .forum span{margin: 0 2px;cursor: pointer;}
+    .form span{margin: 0 2px;cursor: pointer;}
+    .strategy span{margin: 0 2px;cursor: pointer;}
+    .region span{margin: 0 2px;cursor: pointer;}
+    .support span{margin: 0 2px;cursor: pointer;}
+    .topic span{margin: 0 2px;cursor: pointer;}
+  </style>
+</head>
+<body style="padding-top: 20px; padding-left: 10px;">
+
+<h5>主导航</h5>
+<div class="channel"></div>
+<h5>产品分类</h5>
+<div class="forum"></div>
+
+<div style="padding-top: 20px;">
+
+  <h5>内容类型</h5>
+  <div class="form"></div>
+
+  <h5>区域</h5>
+  <div class="region"></div>
+
+  <h5>医生支持度</h5>
+  <div class="support"></div>
+
+  <h5>策略类型</h5>
+  <div class="strategy"></div>
+
+  <h5>精选专题</h5>
+  <div class="topic"></div>
+
+</div>
+
+
+</body>
+
+<script>
+let cate_menu = [];
+let channel_id = 0;
+let forum_id = 0;
+let form_ids = [];
+let region_ids = [];
+let topic_ids = [];
+let support_ids = [];
+let strategy_ids = [];
+
+$(function(){
+  cate_menu = JSON.parse('{$cate_menu}');
+  console.log(cate_menu);
+
+  let channel = cate_menu.channel;
+  let channelhtml = "";
+  $.each(channel,function(index,item){
+    channelhtml += '<span class="label label-primary" onclick="tab_forum('+item.id+')">'+item.title+'</span>';
+  });
+  $(".channel").html(channelhtml);
+
+  let form = cate_menu.form;
+  let formhtml = "";
+  $.each(form,function(index,item){
+    formhtml += '<span class="label label-primary" onclick="tab_region('+item.id+')">'+item.title+'</span>';
+  });
+  $(".form").html(formhtml);
+
+});
+
+//加载产品分类
+function tab_forum(channel_id){
+  let forum = cate_menu.forum;
+  let forumhtml = "";
+  $.each(forum[channel_id],function(index,item){
+    forumhtml += '<span class="label label-primary" onclick="tab_topic('+item.id+')">'+item.title+'</span>';
+  });
+  $(".forum").html(forumhtml);
+
+  //没有二级产品 直接加载专题
+  if(forumhtml == ""){
+    tab_topic(channel_id);
+  }else{
+    $(".topic").html("");
+  }
+
+  //请求接口加载数据
+}
+
+//加载精选专题
+function tab_topic(id){
+  let topic = cate_menu.topic;
+  let topichtml = "";
+
+  $.each(topic[id],function(index,item){
+    topichtml += '<span class="label label-primary" onclick="show_list()">'+item.title+'</span>';
+  });
+  $(".topic").html(topichtml);
+
+  let support = cate_menu.support;
+  let supporthtml = "";
+
+  $.each(support[id],function(index,item){
+    supporthtml += '<span class="label label-primary" onclick="show_list()">'+item.title+'</span>';
+  });
+  $(".support").html(supporthtml);
+
+  let strategy = cate_menu.strategy;
+  let strategyhtml = "";
+
+  $.each(strategy[id],function(index,item){
+    strategyhtml += '<span class="label label-primary" onclick="show_list()">'+item.title+'</span>';
+  });
+  $(".strategy").html(strategyhtml);
+}
+
+//显示区域
+function tab_region(id){
+  if(id == 20){
+    let region = cate_menu.region;
+    let regionhtml = "";
+    $.each(region,function(index,item){
+      regionhtml += '<span class="label label-primary" onclick="show_list()">'+item.title+'</span>';
+    });
+    $(".region").html(regionhtml);
+  }else{
+    $(".region").html("");
+  }
+}
+
+//
+
+//加载类容
+function show_list(){
+
+}
+
+</script>
+</html>
+

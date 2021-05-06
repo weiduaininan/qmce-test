@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>iWE</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__STATIC__/emt/utils/vant-2.10/index.css">
+		<script src="__STATIC__/emt/utils/vue-2.6/vue.min.js"></script>
+		<script src="__STATIC__/emt/utils/vant-2.10/vant.min.js"></script>
+		<link href="__TMPL__/emt/calendar/index.css" rel="stylesheet" type="text/css" />
+		<link href="__STATIC__/emt/utils/base.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="__STATIC__/emt/utils/jquery/jquery.js"></script>
+		<!-- 日历 -->
+		<link rel="stylesheet" type="text/css" media="screen" href="__STATIC__/emt/utils/zabuto-calendar/css/zabuto_calendar.css">
+		<script src="__STATIC__/emt/utils/zabuto-calendar/js/zabuto_calendar.min.js"></script>
+		<script src="__STATIC__/emt/utils/zabuto-calendar/model/data.js"></script>
+		<!-- 图标 -->
+		<link rel="stylesheet" href="__STATIC__/emt/utils/font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div class="app">
+			<!-- <van-nav-bar left-arrow @click-left="onClickLeft" title="日历模式"></van-nav-bar> -->
+			<div class="content">
+				<div id="my-calendar" style=""></div>
+				
+				<!-- list -->
+				<div class="calendarList">
+          <div v-if="!(data.length > 0)" class="content_container_no" style="height:200px;">
+            <img src="__STATIC__/emt/img/none@2x.png"/>
+            <div class="content_container_no_Text">暂无数据</div>
+          </div>
+					<div v-else class="calendarList_row" v-for="(item, index) in data" :key="index">
+						<div class="strip" style="background-color: #D2EBEA;color: #2A918B;" v-if="item.meeting_requestid > 0 && item.meeting_businesscode.substr(0,3) == 'AMS'">
+							<span style="transform: scale(0.8);">
+								AMS
+							</span>
+						</div>
+
+						<div class="strip" style="background-color: #ebd4ef;color: #9c26b0;" v-if="item.meeting_requestid > 0 && item.meeting_businesscode.substr(0,3) == 'GSA' || item.gsa == 1">
+							<span style="transform: scale(0.8);">
+								GSA
+							</span>
+						</div>
+
+						<div class="strip" style="background-color: #D2ECF8;color: #3B97DE;" v-if="item.hj == 1">
+							<span style="transform: scale(0.8);">
+								患教
+							</span>
+						</div>
+
+						<div class="strip" style="background-color: #D2E6F3;color: #005AD2;" v-if="item.sd == 1">
+							<span style="transform: scale(0.8);">
+								S&D
+							</span>
+						</div>
+
+						<div class="strip" style="background-color: #e7ebed;color: #8799a3;" v-if="(item.meeting_requestid == 0 && item.hj == 0 && item.sd == 0 && item.gsa == 0) || (item.hj == 0 && item.sd == 0 && item.gsa == 0 && item.meeting_requestid > 0 && item.meeting_businesscode.substr(0,3) != 'AMS' && item.meeting_businesscode.substr(0,3) != 'GSA')">
+							<span style="transform: scale(0.8);">
+								自定义
+							</span>
+						</div>
+
+						<div class="time"  @click="cardDetail(item)">
+							<div class="start">
+								{{item.start}}
+							</div>
+							<div class="end">
+								-{{item.end}}
+							</div>
+						</div>
+						<div class="calendarList_row_detail"  @click="cardDetail(item)">
+							<div class="title">
+								{{item.meeting_title}}
+							</div>
+							<!-- <div class="invite"> -->
+								<!-- 邀请人： -->
+							<!-- </div> -->
+						</div>
+						<div class="other"  @click="showOtherPopup(item)">
+							<img src="__STATIC__/emt/img/icon_ellipsis@2x.png" class="onterImg" />
+						</div>
+					</div>
+	
+				</div>
+			</div>
+			
+			<!-- 省略号弹出 -->
+			<van-popup v-model="showOther" round position="bottom" duration="0.1">
+				
+				<div class="otherView">
+					<div class="otherRow" @click="otherRowClick(0)" v-if="mitem.emt == 1">
+						<img :src="otherIndex == 0 ? '__STATIC__/emt/img/qr_tingzhong_selected.png' : '__STATIC__/emt/img/qr_tingzhong.png' " :class="otherIndex == 0 ? 'other_icon1' : 'other_icon'"  />
+						<div :class="otherIndex == 0 ? 'otherTitle_selected' :'otherTitle' ">
+							听众二维码
+						</div>
+					</div>
+					<div class="otherRow" @click="otherRowClick(1)" v-if="mitem.emt == 1">
+						<img :src="otherIndex == 1 ? '__STATIC__/emt/img/icon_video_sec@2x.png'  : '__STATIC__/emt/img/icon_download@2x.png'"  :class="otherIndex == 1 ? 'other_icon1' : 'other_icon'" />
+						<div :class="otherIndex == 1 ? 'otherTitle_selected' :'otherTitle' ">
+							会议直播
+						</div>
+					</div>
+					<div class="otherRow" @click="otherRowClick(2)" v-if="mitem.emt == 1">
+						<img :src="otherIndex == 2 ? '__STATIC__/emt/img/icon_online_sec@2x.png'  : '__STATIC__/emt/img/icon_see@2x.png'" :class="otherIndex == 2 ? 'other_icon1' : 'other_icon'" />
+						<div :class="otherIndex == 2 ? 'otherTitle_selected' :'otherTitle' ">
+							在线情况
+						</div>
+					</div>
+					
+					<div class="otherRow" @click="otherRowClick(3)">
+						<img :src="otherIndex == 3 ? '__STATIC__/emt/img/yaoqing_selected.png' : '__STATIC__/emt/img/yaoqing.png' " :class="otherIndex == 3 ? 'other_icon1' : 'other_icon'"  />
+						<div :class="otherIndex == 3 ? 'otherTitle_selected' :'otherTitle' ">
+							学术邀请函
+						</div>
+					</div>
+					
+					<div class="otherRow" @click="otherRowClick(4)">
+						<img :src="otherIndex == 4 ? '__STATIC__/emt/img/qianshu_selected.png'  : '__STATIC__/emt/img/qianshu.png'" :class="otherIndex == 4 ? 'other_icon1' : 'other_icon'" />
+						<div :class="otherIndex == 4 ? 'otherTitle_selected' :'otherTitle' ">
+							签署记录
+						</div>
+					</div>
+					
+					<div class="otherRow" @click="otherRowClick(5)">
+						<img :src="otherIndex == 5 ? '__STATIC__/emt/img/icon_quit_sec@2x.png'  : '__STATIC__/emt/img/icon_comein@2x.png'" :class="otherIndex == 5 ? 'other_icon1' : 'other_icon'" />
+						<div :class="otherIndex == 5 ? 'otherTitle_selected' :'otherTitle' ">
+							签到表
+						</div>
+					</div>
+					
+					<div class="otherRow" @click="otherRowClick(6)" style="border-bottom: 0px solid #EEEEEE;" v-if="mitem.meeting_level == 1">
+						<img :src="otherIndex == 6 ? '__STATIC__/emt/img/icon_transfer@2x.png' : '__STATIC__/emt/img/icon_turn_no@2x.png' " :class="otherIndex == 6 ? 'other_icon1' : 'other_icon'"  />
+						<div :class="otherIndex == 6 ? 'otherTitle_selected' :'otherTitle' ">
+							会议转让
+						</div>
+					</div>
+			
+				</div>
+			</van-popup>
+			
+			<!-- 创建会议弹出 -->
+			<van-popup v-model="showCreate" round position="bottom" :style="{ height: '55%' }" duration="0.1">
+				<div class="otherView">
+          <!--
+					<div class="otherRow" style="height: 18%;margin-top: 10px;" @click="createItmeClick(3)">
+						<div :class="createIndex == 0 ? 'otherTitle_selected' :'otherTitle' ">
+							新建RemoteCall
+							<div style="font-size: 13px;margin-top: 6px;color: #2A918B;">一对一远程拜访</div>
+						</div>
+					</div>
+					-->
+					<div class="otherRow" style="height: 18%;" @click="createItmeClick(4)">
+						<div :class="createIndex == 1 ? 'otherTitle_selected' :'otherTitle' ">
+							新建GSA会议
+							<div style="font-size: 13px;margin-top: 6px;color: #2A918B;">科室会，无讲课费</div>
+						</div>
+					</div>
+					
+					<div class="otherRow" style="height: 18%;" @click="createItmeClick(2)">
+						<div :class="createIndex == 2 ? 'otherTitle_selected' :'otherTitle' ">
+							新建线上患教
+							<div style="font-size: 13px;margin-top: 6px;color: #2A918B;">目标观众为患者，无法获取参会数据</div>
+						</div>
+					</div>
+					
+					<div class="otherRow" style="height: 18%;" @click="createItmeClick(1)">
+						<div :class="createIndex == 3 ? 'otherTitle_selected' :'otherTitle' ">
+							新建S&D会议
+							<div style="font-size: 13px;margin-top: 6px;color: #2A918B;">赞助与捐赠项目会议</div>
+						</div>
+					</div>
+					
+					<div class="otherRow" style="height: 18%;border-bottom: 0px solid #EEEEEE;" @click="createItmeClick(0)">
+						<div :class="createIndex == 4 ? 'otherTitle_selected' :'otherTitle' ">
+							新建自定义会议
+							<div style="font-size: 13px;margin-top: 6px;color: #2A918B;">其他会议</div>
+						</div>
+					</div>
+				</div>
+			</van-popup>
+			
+			<!-- 会议转让弹出 -->
+			<van-popup v-model="showTurn" round position="bottom" :style="{ height: '50%' }" duration="0.1">
+				<div class="turn_title">
+					会议转让给
+				</div>
+				<div class="turn_content">
+					<van-cell-group>
+					  <van-field v-model="turnValue" label="文本" placeholder="请输入接收者initial" />
+					</van-cell-group>
+					<van-button round type="info" style="margin-top: 20%;" @click="turnMeeting">确 认</van-button>
+				</div>
+			</van-popup>
+				
+			<!-- 签到表下载弹出 -->
+			<van-dialog v-model="showDownload" confirm-button-text="查看" confirm-button-color="#2A918B" close-on-click-overlay="true">
+			    <div class="downloadView">
+			    	<div class="download_title">
+			    		<img src="__STATIC__/emt/img/icon_tishi@2x.png" class="download_tishi" />
+			    		<div class="download_title_des">
+			    			提示信息
+			    		</div>
+			    	</div>
+            <div class="download_centent_des">
+              <div class="download_row" style="color:#666;padding-bottom:30px;">
+                请在电脑端iWE中查看
+              </div>
+            </div>
+			    	<!--
+            <div class="download_centent_des">
+              <div class="download_row1">
+                <img src="__STATIC__/emt/img/icon_tishi@2x.png" class="download_tishi" />
+                <div class="download_row1_des">
+                  请特别注意，不要使用系统中正式申请审批的会议进行测试！
+                </div>
+              </div>
+              <div class="download_row2">
+                关于电子签到表格的几点说明：
+              </div>
+              <div class="download_row3">
+                <div class="number1">1</div>
+                <div class="row_detail">
+                  电子签到表中标记  <span class="span_yellow">黄色的参会人</span> 有可能接受后续的线下身份核实；
+                </div>
+                
+              </div>
+              <div class="download_row4">
+                <div class="number1">2</div>
+                <div class="row_detail">
+                  电子签到表中标记  <span class="span_red">红色的参会人</span> 由于未按照规定方式参加会议，不会被计入有效参会人；
+                </div>
+                
+              </div>
+              <div class="download_row5">
+                
+              </div>
+            </div>
+            -->
+			    	
+			    </div>
+			</van-dialog>
+			
+			<!-- 听众二维码弹出 -->
+			<van-popup v-model="showQR" round position="bottom" duration="0.1">
+				<div class="qr_title">
+					会议信息转发
+				</div>
+				<div class="qr_detail">
+					<div class="qr_detail_row">
+						<img src="__STATIC__/emt/img/icon_time@2x.png" class="qr_detail_row_time" style="width: 20px;" />
+						<div class="qr_detail_row_title">会议时间：{{mitem.mdate}}  {{mitem.start}}-{{mitem.end}}</div>
+					</div>
+					<div class="qr_detail_row">
+						<img src="__STATIC__/emt/img/icon_local@2x.png" class="qr_detail_row_time" style="width: 14px;margin-left: 4px;" />
+						<div class="qr_detail_row_title">会议地点：{{mitem.meeting_activitycity}} {{mitem.meeting_activityaddress}}</div>
+					</div>
+				<!-- 	<div class="qr_detail_row">
+						<img src="__STATIC__/emt/img/icon_duanma@2x.png" class="qr_detail_row_time" style="width: 20px;margin-left: 0px;" />
+						<div class="qr_detail_row_title">会议短码：admin29825</div>
+					</div> -->
+				</div>
+				<div class="qr_view_img" style="margin-bottom: 20px;">
+					<img :src="mitem.emt_signqrcode" class="qr_img" />
+					<van-button round type="info" style="min-width: 140px;margin-top: 30px;">长按保存二维码</van-button>
+				</div>
+				
+				
+			</van-popup>
+			
+			<!-- 创建会议 -->
+			<div class="create" @click="createClick">
+				<img src="__STATIC__/emt/img/icon_create_sm@2x.png" class="create_icon" />
+				<!-- <div class="create_title">
+					新建会议
+				</div> -->
+			</div>
+			<!-- 日历 -->
+			<div class="calendar" @click="calendarClick">
+				<img src="__STATIC__/emt/img/list.png" class="calendar_icon" />
+				<!-- <div class="create_title">
+					列表模式
+				</div> -->
+			</div>
+			
+		</div>
+		<script src="__STATIC__/emt/utils/base.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			new Vue({
+				el: '.app',
+				data: {
+					// nav
+					active: 0,
+					icon: {
+						active1: '__STATIC__/emt/img/tabbar/tabbar1_select.png',
+						inactive1: '__STATIC__/emt/img/tabbar/tabbar1.png',
+						active2: '__STATIC__/emt/img/tabbar/tabbar2_select.png',
+						inactive2: '__STATIC__/emt/img/tabbar/tabbar2.png'
+					},
+					type:0,
+					createIndex:-1,
+					showQR:false,
+					showCreate:false,
+					showTurn:false,
+					showDownload:false,
+					turnValue:'',
+					data:[],
+					showOther: false,
+					otherIndex: -1,
+					mitem:'',//展示弹出的临时变量
+					seldate:'',
+					seltype:''
+				},
+				mounted() {
+					let that = this;
+					let nowdate = new Date();
+					let year = nowdate.getFullYear();
+					let month = nowdate.getMonth() + 1;
+					if(sessionStorage.getItem('cindexdate') && sessionStorage.getItem('cindextype')){
+						let cindexdate = sessionStorage.getItem('cindexdate');
+						cindexdate = cindexdate.split("-");
+						year = cindexdate[0];
+						month = cindexdate[1];
+						sessionStorage.removeItem('cindexdate')
+						sessionStorage.removeItem('cindextype')
+					}
+					$("#my-calendar").zabuto_calendar({
+						//语言 cn
+						language: "cn",
+						//导航显示年（布尔|整数）
+						year: year,
+						//导航显示月（布尔|整数）
+						month: month,
+						// 完全禁用到前几个月的导航，或者只允许最多几个月的时间。
+						show_previous: true,
+						// 完全禁用到下个月的导航，或者最多只允许几个月。
+						show_next: 12,
+						cell_border: false, //是否显示日期网格
+						// 今天显示带有特殊徽章。
+						today: false,
+						// 显示星期几标题。
+						show_days: true,
+						// 从星期日（0）或星期一（1）开始一周。
+						weekstartson: 1,
+						// 覆盖“上一个”和/或“下一个”图标html
+						nav_icon: {
+							prev: '<i class="fa fa-chevron-circle-left"></i>',
+							next: '<i class="fa fa-chevron-circle-right"></i>'
+						},
+						// 数据源
+						//data: [],
+						// 选择日期的点击事件
+						action: function() {
+							that.myDateFunction(this.id);
+						},
+						// 导航点击事件
+						action_nav: function() {
+							that.myNavFunction(this.id);
+						},
+						//异步获取数据
+						ajax:{
+							url: "{:url('emt/index/get_now_month_calendar')}",
+							modal: true
+						}
+					});
+				},
+				created:function(e){
+				    let that = this;
+				    let nowdate = new Date();
+						let year = nowdate.getFullYear();
+						let month = nowdate.getMonth() + 1;
+
+						if(sessionStorage.getItem('cindexdate') && sessionStorage.getItem('cindextype')){
+							that.loadData("month",sessionStorage.getItem('cindexdate'))
+						}else{
+							that.loadData("month",year+"-"+month)
+						}
+						sessionStorage.setItem('calendar', true);
+				},
+				methods: {
+					myNavFunction(id) {
+						let that = this;
+						let date = $("#" + id).data("to");
+						that.loadData("month",date.year+"-"+date.month)
+						//console.log(date);
+					},
+					myDateFunction(id) {
+						let date = $("#" + id).data("date");
+						let that = this;
+						if($("#" + id + '_day').hasClass('chose')){
+							that.loadData("month",date.substring(0,7));
+							$('.day').each(function() {
+								$(this).removeClass('chose');
+							});
+						}else{
+							that.loadData("day",date)
+							$('.day').each(function() {
+								$(this).removeClass('chose');
+							});
+							$("#" + id + '_day').addClass('chose');
+						}
+						//console.log(date);
+					},
+					//加载数据
+					loadData(type,date){
+						let that = this;
+						that.seldate = date;
+						that.seltype = type;
+						$.ajax({
+							url: '{:url("emt/index/get_index_calendar")}',
+							type: "POST",
+							data: {type:type,date:date},
+							dataType: "json",
+							success: function (res) {
+								console.log(res.data)
+								that.data = res.data;
+							}
+						});
+					},
+					onClickLeft(e) {
+						//window.location.href = "../meeting/index.html"
+					},
+					otherRowClick(e) {
+						var that = this;
+						that.otherIndex = e;
+						if(e == 0){
+							that.getEmtInfo()
+						}else if(e == 1){
+							sessionStorage.setItem('cindexdate',that.seldate);
+							sessionStorage.setItem('cindextype',that.seltype);
+							let baseurl = '{$mp_baseurl}'
+							setTimeout(`javascript:location.href='${baseurl}${that.mitem.meeting_id}'`, 100);
+						}else if(e == 2){
+							sessionStorage.setItem('cindexdate',that.seldate);
+							sessionStorage.setItem('cindextype',that.seltype);
+							let mid = that.mitem.meeting_id;
+							let url ="{:url('emt/monitor/show',['id'=>'meeting_id'])}";
+							url = url.replace("meeting_id",mid);
+							setTimeout(`javascript:location.href='${url}'`, 100);
+						}else if(e == 3){
+							sessionStorage.setItem('cindexdate',that.seldate);
+							sessionStorage.setItem('cindextype',that.seltype);
+							let mid = that.mitem.meeting_id;
+							let url ="{:url('emt/agreement/all',['id'=>'meeting_id'])}";
+							url = url.replace("meeting_id",mid);
+							setTimeout(`javascript:location.href='${url}'`, 100);
+						}else if(e == 4){
+							sessionStorage.setItem('cindexdate',that.seldate);
+							sessionStorage.setItem('cindextype',that.seltype);
+							let mid = that.mitem.meeting_id;
+							let url ="{:url('emt/agreement/signed',['id'=>'meeting_id'])}";
+							url = url.replace("meeting_id",mid);
+							setTimeout(`javascript:location.href='${url}'`, 100);
+						}else if(e == 5) {
+							that.showDownload = true;
+						}else if(e == 6) {
+							that.turnValue = '';
+							that.showTurn = true;
+						}
+					},
+					turnMeeting(){
+						let that = this;
+						let mid = that.mitem.meeting_id;
+						let initial = that.turnValue;
+						if(!initial){
+							vant.Toast.fail("请填写initial")
+							return;
+						}
+						$.ajax({
+							url: '{:url("emt/meeting/transfer")}',
+							type: "POST",
+							data: {id:mid,initial:initial},
+							success: function (res) {
+								if(res.code == '1'){
+									vant.Toast.success(res.msg)
+									that.showTurn = false;
+									that.showOther = false;
+									that.otherIndex = -1;
+									// let date = $("#" + id).data("to");
+									// that.loadData("month",date.year+"-"+date.month)
+									that.loadData(that.seltype,that.seldate);
+								}else{
+									vant.Toast.fail(res.msg)
+								}
+							}
+						});
+					},
+					getEmtInfo(){
+						let that = this;
+						let type = '';
+						if(that.mitem.hj == '1'){
+							type = 'hj';
+						}else if (that.mitem.sd == '1'){
+							type = 'sd';
+						}else {
+							type = 'iwe';
+						}
+
+						$.ajax({
+							url: '{:url("emt/meeting/emt_binder")}',
+							type: "POST",
+							data: {meeting_id:that.mitem.meeting_id,type:type},
+							success: function (res) {
+								if(res.code == '1'){
+									that.mitem.emt_signqrcode = res.data.qrcode_url;
+								}
+								that.showQR = true;
+							}
+						});
+
+						// let that = this
+						// $.ajax({
+						// 	url: '{:url("emt/meeting/emt_binder")}',
+						// 	type: "POST",
+						// 	data: {meeting_id:that.mitem.meeting_id},
+						// 	success: function (res) {
+						// 		if(res.data.liveid) {
+						// 			that.mitem.emt_signqrcode = that.mitem.meeting_imgqcode
+						// 		}
+						// 		that.showQR = true;
+						// 		//console.log(that.mitem)
+						// 	}
+						// });
+					},
+					createClick(){
+						var that = this;
+						that.showCreate = true;
+					},
+					cardDetail(e){
+						let that = this;
+						sessionStorage.setItem('cindexdate',that.seldate);
+						sessionStorage.setItem('cindextype',that.seltype);
+
+						let mid = e.meeting_id;
+						let url ="{:url('emt/meeting/detail',['id'=>'meeting_id'])}";
+						if(e.hj == '1'){
+							url ="{:url('emt/hj_meeting/detail',['id'=>'meeting_id'])}";
+						}else if(e.sd == '1'){
+							url ="{:url('emt/sd_meeting/detail',['id'=>'meeting_id'])}";
+						}else if(e.gsa == '1' || e.meeting_businesscode.substr(0,3) == 'GSA'){
+							url ="{:url('emt/gsa_meeting/detail',['id'=>'meeting_id'])}";
+						}else{
+							url ="{:url('emt/meeting/detail',['id'=>'meeting_id'])}";
+						}
+						url = url.replace("meeting_id",mid);
+						window.location.href = url;
+					},
+					calendarClick(e){
+						sessionStorage.setItem('calendar', false);
+						window.location.href="{:url('emt/index/index',['type'=>'list'])}";
+					},
+					createItmeClick(e){
+						let that = this;
+						sessionStorage.setItem('cindexdate',that.seldate);
+						sessionStorage.setItem('cindextype',that.seltype);
+
+						if(e == 0){
+							window.location.href="{:url('emt/meeting/add')}";
+						}else if(e == 1){
+							window.location.href="{:url('emt/sd_meeting/add')}";
+						}else if(e == 2){
+							window.location.href="{:url('emt/hj_meeting/add')}";
+						}else if(e == 4){
+							window.location.href="{:url('emt/gsa_meeting/add')}";
+						}
+					},
+					showOtherPopup(item) {
+						var that = this;
+						that.mitem = item;
+						that.showOther = true;
+						that.otherIndex = -1;
+					},
+				},
+				computed: {},
+			})
+
+			// function myDateFunction(id) {
+			// 	var date = $("#" + id).data("date");
+			// 	// 是否有活动
+			// 	//var hasEvent = $("#" + id).data("hasEvent");
+			//
+			// 	//console.log(date);
+			// 	//console.log(hasEvent);
+			//
+			// 	$('.day').each(function() {
+			// 		$(this).removeClass('chose');
+			// 	});
+			// 	$("#" + id + '_day').addClass('chose');
+			// 	//console.log(id + '_day');
+			//
+			//
+			// }
+			
+			//var month = 0;
+			
+			//function myNavFunction(id) {
+				// let date = $("#" + id).data("to");
+				// console.log(date);
+				//获取当月的数据
+
+
+				// let arr = document.getElementsByClassName("day");
+				// let tag = id.replace("nav-next", "").replace("nav-prev", "");
+				// for(var i = 0; i < arr.length; i++){
+				// 	console.log(arr[i].id.replace(tag,"").replace("_day",""));
+				// }
+
+				// var nav = $("#" + id).data("navigation");
+				// var to = $("#" + id).data("to");
+				// console.log(nav);
+				// console.log(to);
+
+
+				//return;
+
+
+				// console.log(id);
+				// var nav = $("#" + id).data("navigation");
+				// // 显示的日期
+				// var to = $("#" + id).data("to");
+				//
+				// var data = [{
+				// 	date: '2020-11-08'
+				// }, {
+				// 	date: '2020-11-28'
+				// }]
+
+				// for (var i = 0; i < data.length; i++) {
+				// 	var dateId = id.replace("nav-next", "") + data[i].date + '_day';
+				// 	//console.log(dateId);
+				//
+				// 	var a = $("#" + dateId);
+				// 	var arr = document.getElementsByClassName("day");
+				// 	for (var i = 0; i < arr.length; i++) {
+				// 		// console.log(arr[i].id);
+				// 		// console.log(dateId);
+				// 		if (arr[i].id == dateId) {
+				// 			console.log('相同');
+				// 			$("#" + dateId).addClass("available");
+				// 			//arr[i].classList.add("available");
+				// 		}
+				// 	}
+				// 	//console.log(arr);
+				// }
+				//console.log(nav);
+				//console.log($("#my-calendar").zabuto_calendar());
+				//$("#my-calendar").zabuto_calendar()
+			//}
+			
+			
+		</script>
+	</body>
+</html>

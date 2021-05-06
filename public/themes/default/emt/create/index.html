@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>iWE</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../utils/vant-2.10/index.css">
+		<script src="../../utils/vue-2.6/vue.min.js"></script>
+		<script src="../../utils/vant-2.10/vant.min.js"></script>
+		<link href="./index.css" rel="stylesheet" type="text/css" />
+		<link href="../../utils/base.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div class="app">
+			<van-nav-bar left-arrow @click-left="onClickLeft" :title="type == '0' ? '新建自定义会议' : type == '1' ? '新建S&D会议' :  type == '2' ? '新建线上患教' : type == '3' ? '新建RemoteCall' : type == '4' ? '新建GSA会议' : '' "></van-nav-bar>
+			<div class="content">
+				<div class="nav">
+					<div v-if="isEmeeting && type != '4'" class="eMeeting">
+						<div class="tab_e" :class="active == 1 ? 'tab_selected' : 'tab_normal'" :style="active == 1 ? 'background-image: url(../../img/bg_e_1_selected@2x.png);' : 'background-image: url(../../img/bg_e_1_normal@2x.png);'"
+						 @click="tabClick(1)">1 基本信息</div>
+						<div class="tab_e" :class="active == 2 ? 'tab_selected' : 'tab_normal'" :style="active == 2 ? 'background-image: url(../../img/bg_e_selected@2x.png);' : 'background-image: url(../../img/bg_e_normal@2x.png);'"
+						 @click="tabClick(2)">2 讲者信息</div>
+					</div>
+					<div v-else class="noeMeeting">
+						<div class="tab" :class="active == 1 ? 'tab_selected' : 'tab_normal'" :style="active == 1 ? 'background-color;' : 'background-image: url(../../img/bg_1_normal@2x.png);'"
+						 @click="tabClick(1)">基本信息</div>
+					</div>
+
+				</div>
+
+				<!-- 1、基本信息 -->
+				<div v-if="active == 1" class="activeView">
+
+					<!-- S&D信息 -->
+					<div class="showSetView" v-if="type == '1'">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								S&D信息
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="showSetView" style="margin-top: 0px;margin-left: 15px;">
+								<div class="showSetView_row" style="height: 40px;">
+									<div class="row_detail">
+										项目编号与名称<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+									</div>
+								</div>
+								<div class="binding_view">
+									<div class="binding_view_content dis_center" style="padding: 10px 5px;">
+										<van-dropdown-menu>
+											<van-dropdown-item v-model="act_number" :options="option1" />
+										</van-dropdown-menu>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="showSetView" style="margin-top: 0px;margin-left: 15px;">
+								<div class="showSetView_row" style="height: 40px;">
+									<div class="row_detail">
+										备注
+									</div>
+								</div>
+								<div class="binding_view">
+									<div class="binding_view_content dis_center" style="padding: 10px 5px;">
+										<van-field v-model="sd_remarks" placeholder="请填写S&D备注信息"></van-field>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 活动审批图片 -->
+						<div class="showSetView">
+							<div class="showSetView_row" style="margin-top: 0px;margin-left: 15px;">
+								<div class="row_detail">
+									活动审批图片<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+								</div>
+							</div>
+							<div class="binding_view">
+								<div class="binding_view_content dis_center" style="height: 150px;">
+									<van-uploader :after-read="afterRead" v-model="emailFileList" :show-upload="emailFileList.length == 0"
+									 image-fit="contain" style="background-image: url();">
+									</van-uploader>
+									<div v-if="emailFileList.length == 0" class="uploader_title" style="pointer-events: none;">例如审批邮件照片等，大小不超过2MB</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 新建患教会议 -->
+					<div class="showSetView" v-if="type == '2'">
+						<div class="showSetView">
+							<div class="showSetView_row">
+								<div class="line"></div>
+								<div class="row_detail">
+									活动审批图片<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+								</div>
+							</div>
+							<div class="binding_view">
+								<div class="binding_view_content dis_center" style="height: 150px;">
+									<van-uploader :after-read="afterRead" v-model="emailFileList" :show-upload="emailFileList.length == 0"
+									 image-fit="contain" style="background-image: url();">
+									</van-uploader>
+									<div v-if="emailFileList.length == 0" class="uploader_title" style="pointer-events: none;">例如审批邮件照片等，大小不超过2MB</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 新建VirtualCall -->
+					<div class="showSetView" v-if="type == '3'">
+						<div class="showSetView">
+							<div class="showSetView_row">
+								<div class="line"></div>
+								<div class="row_detail">
+									话题选择<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+								</div>
+							</div>
+							<div class="binding_view">
+								<div class="binding_view_content dis_center">
+									<van-dropdown-menu>
+										<van-dropdown-item v-model="topic_number" :options="option2" />
+									</van-dropdown-menu>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Initial -->
+					<div class="showSetView" v-if="type == '4'">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								讲者Initial<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+							</div>
+						</div>
+						<div class="binding_view" style="flex-direction: row;height: 60px;border-top: 1px solid #EEEEEE;">
+							<div class="binding_view_content dis_center">
+								<van-field v-model="activity_initial" placeholder="请输入讲者Initial"></van-field>
+							</div>
+						</div>
+					</div>
+
+					<!-- 姓名 -->
+					<div class="showSetView" v-if="type == '4'">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								讲者姓名<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+							</div>
+						</div>
+						<div class="binding_view" style="flex-direction: row;height: 60px;border-top: 1px solid #EEEEEE;">
+							<div class="binding_view_content dis_center">
+								<van-field v-model="activity_name" placeholder="请输入讲者姓名"></van-field>
+							</div>
+						</div>
+					</div>
+
+					<!-- 会议主题 -->
+					<div class="showSetView">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								会议主题<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="binding_view_content dis_center">
+								<van-field v-model="activity_theme" placeholder="请输入会议主题"></van-field>
+							</div>
+						</div>
+					</div>
+
+					<!-- 所在城市/地区 -->
+					<div class="showSetView">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								所在城市/地区<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="binding_view_content dis_center">
+								<van-field v-model="fieldCityValue" is-link readonly placeholder="请选择城市信息" @click="showChoseCityClick"></van-field>
+								<van-popup v-model="showChoseCity" round position="bottom" :style="{ height: '50%' }" duration="0.1">
+									<van-picker show-toolbar title="请选择城市信息" :columns="columns" @confirm="onCityConfirm" @cancel="onCityCancel"
+									 @change="onCityChange" />
+								</van-popup>
+							</div>
+						</div>
+					</div>
+
+					<!-- 会议地点 -->
+					<div class="showSetView">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								会议地点<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="binding_view_content dis_center">
+								<van-field v-model="activity_address" placeholder="请输入会议地点"></van-field>
+							</div>
+						</div>
+					</div>
+
+					<!-- 开始时间 -->
+					<div class="showSetView">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								开始时间<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="binding_view_content dis_center">
+								<van-field v-model="fieldStartValue" is-link readonly placeholder="请选择开始时间" @click="showChoseStartClick"></van-field>
+								<van-popup v-model="showChoseStart" round position="bottom" :style="{ height: '38%' }" duration="0.1">
+									<van-datetime-picker v-model="currentDate" type="datehour" title="选择开始时间" :min-date="startMinDate" :max-date="startMaxDate"
+									 @confirm="onStartConfirm" @cancel="onStartCancel" @change="onStartChange" :formatter="formatter" />
+								</van-popup>
+							</div>
+						</div>
+					</div>
+
+					<!-- 结束时间 -->
+					<div class="showSetView">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								结束时间<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="binding_view_content dis_center">
+								<van-field v-model="fieldEndValue" is-link readonly placeholder="请选择结束时间" @click="showChoseEndClick"></van-field>
+								<van-popup v-model="showChoseEnd" round position="bottom" :style="{ height: '38%' }" duration="0.1">
+									<van-datetime-picker v-model="currentDate" type="datehour" title="选择结束时间" :min-date="endMinDate" :max-date="endMaxDate"
+									 @confirm="onEndConfirm" @cancel="onEndCancel" @change="onEndChange" :formatter="formatter" />
+								</van-popup>
+							</div>
+						</div>
+					</div>
+
+					<!-- 是否使用 -->
+					<div class="activeView_row" style="margin-top: 10px;">
+						<div class="line"></div>
+						<div class="row_detail">
+							是否使用
+							<span class="greenTitle">E-Meeting线上直播</span>
+						</div>
+						<van-switch v-model="isEmeeting" active-color="#2A918B" inactive-color="#dcdee0" @change="eMeetingSwitch" />
+					</div>
+
+					<!-- 是否公开 -->
+					<div class="showSetView" v-if="isEmeeting">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								是否 <span class="greenTitle font-14">公开</span>
+							</div>
+							<div class="showQRActive">
+								<van-switch v-model="isOpen" active-color="#2A918B" inactive-color="#dcdee0" @change="openSwitch" />
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="binding_view_content">
+								<div class="binding_view_content_row margin-top-bottom-10">
+									（公开会议会展示在糖医网公众号在线会议专区，所有人均可报名，不公开会议只可通过二维码扫码参与，不会展示在公众号专区列表中）
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 是否需要报名 -->
+					<div class="showSetView" v-if="isEmeeting">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								是否 <span class="greenTitle font-14">需要报名</span>
+							</div>
+							<div class="showQRActive">
+								<van-switch v-model="isSignUp" active-color="#2A918B" inactive-color="#dcdee0" @change="signUpSwitch" />
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="binding_view_content">
+								<div class="binding_view_content_row margin-top-bottom-10">
+									（无需报名的会议，任何人均可注册观看，但未报名的用户无法接
+									收会议提醒）
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 是否报名弹出 -->
+					<van-popup v-model="showSignUp" round :style="{ height: '50%'}" duration="0.1">
+						<div class="downloadView">
+							<div class="download_title">
+								<img src="../../img/icon_tishi@2x.png" class="download_tishi" />
+								<div class="download_title_des">
+									提示信息
+								</div>
+							</div>
+							<div class="download_centent_des">
+								<div class="download_row5">
+									为了确保您的会议有效，请在关闭报名功能前，与合规部门确认对于本场会议，是否可免去该步骤。
+								</div>
+							</div>
+
+							<div class="buttonView">
+								<van-button round type="info" style="min-width: 180px;" @click="closeSignUp">确认</van-button>
+							</div>
+
+						</div>
+					</van-popup>
+
+					<!-- 是否开启线下微信签到 -->
+					<div class="activeView_row" style="margin-top: 10px;">
+						<div class="line"></div>
+						<div class="row_detail">
+							是否开启
+							<span class="greenTitle">线下微信签到</span>
+						</div>
+						<van-switch v-model="isWXSignIn" active-color="#2A918B" inactive-color="#dcdee0" @change="WXSignInSwitch" />
+					</div>
+
+					<!-- 活动头图 -->
+					<div class="showSetView">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail" style="width: 100%;">
+								活动头图<span style="font-size: 12px;margin-left: 4px;color: #2A918B;">(图片大小为600x300px为宜，比例2:1)</span>
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="binding_view_content dis_center" style="height: 150px;">
+								<van-uploader :after-read="afterRead" v-model="headFileList" :show-upload="headFileList.length == 0" image-fit="contain"
+								 :style="headFileList.length == 0 ? 'background-image: url(../../img/iwe_toutu@2x.png);' :'background-image: url();' ">
+								</van-uploader>
+								<div v-if="headFileList.length == 0" class="uploader_title" style="pointer-events: none;">上传活动头图，不传则现实默认图片</br>图片大小为600x300px为宜，比例2:1</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 大会日程 -->
+					<div class="showSetView">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								大会日程
+							</div>
+							<van-switch v-model="isSchedule" active-color="#2A918B" inactive-color="#dcdee0" @change="scheduleSwitch" />
+						</div>
+						<div class="binding_view" v-if="isSchedule">
+							<div class="binding_view_content dis_center" style="height: 150px;">
+								<van-uploader :after-read="afterRead" v-model="scheduleFileList" style="background-image: url();" :show-upload="scheduleFileList.length == 0"
+								 image-fit="contain">
+
+								</van-uploader>
+								<div v-if="scheduleFileList.length == 0" class="uploader_title" style="pointer-events: none;margin-top: 10px;">请上传大会日程图片</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- 计划参与人数 -->
+					<div class="showSetView">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								计划参与NN人数<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="binding_view_content dis_center">
+								<van-field v-model="nnNum" placeholder="请输入计划参与NN人数"></van-field>
+							</div>
+						</div>
+					</div>
+
+					<div class="showSetView">
+						<div class="showSetView_row">
+							<div class="line"></div>
+							<div class="row_detail">
+								计划参与非NN人数<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+							</div>
+						</div>
+						<div class="binding_view">
+							<div class="binding_view_content dis_center">
+								<van-field v-model="noNNnum" placeholder="计划参与非NN人数"></van-field>
+							</div>
+						</div>
+					</div>
+
+					<div v-if="isEmeeting && type != '4'" class="nextBtn" @click="nextClick(2)">
+						下一步
+					</div>
+					<div v-else class="nextBtn" @click="nextClick(3)">
+						完成
+					</div>
+				</div>
+
+				<!-- S&D会议弹出提醒 -->
+				<van-dialog v-model="showSD" confirm-button-text="确定" confirm-button-color="#2A918B" close-on-click-overlay="true">
+					<div class="downloadView" style="margin-top: 15px;">
+						<div class="download_title">
+							<img src="../../img/icon_tishi@2x.png" class="download_tishi" />
+							<div class="download_title_des">
+								提示信息
+							</div>
+						</div>
+						<div class="download_centent_des" style="margin-top: 0px;">
+							<div class="download_row1">
+								<img src="../../img/icon_tishi@2x.png" class="download_tishi" />
+								<div class="download_row1_des">
+									使用eMeeting形式举办SD中的会议，须确保：
+								</div>
+							</div>
+							<div class="remind_row">
+								<div class="number">1</div>
+								<div class="remind_row_detail">
+									该SD项目使用iWe召开eMeeting，NN已经与第三方（学会/协会）达成正式的书面共识，并经合规法律部审批通过。
+								</div>
+							</div>
+							<div class="remind_row">
+								<div class="number">2</div>
+								<div class="remind_row_detail">
+									在此举办的每一场eMeeting会议，已经通过第三方（学会/协会）的会议预审批流程。
+								</div>
+							</div>
+							<div class="remind_row">
+								<div class="number">3</div>
+								<div class="remind_row_detail">
+									在此举办的每一场eMeeting会议，NN项目经理已知晓并同意。
+								</div>
+							</div>
+							<div class="remind_row">
+								<div class="number">4</div>
+								<div class="remind_row_detail">
+									NN项目经理应对SD使用iWe的原因，背景，流程，各方责任，与志愿者充分培训。
+								</div>
+							</div>
+							<div class="remind_row">
+								<div class="number" style="background-color:  rgb(239, 71, 34);color: #FFFFFF;">5</div>
+								<div class="remind_row_detail" style="color: rgb(239, 71, 34);">
+									志愿者应已接受相关培训（上面第4点），并充分理解培训内容和要求。有任何问题，请联系相关NN项目经理。
+								</div>
+							</div>
+							<div class="remind_row">
+								<div class="number">6</div>
+								<div class="remind_row_detail">
+									如果不满足以上几点基本要求，比如召开了未经学会/协会审批的会议，或会议未满足项目要求，学会/协会或者NN将不予支付讲课费。
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</van-dialog>
+
+				<!-- 2、讲者信息 -->
+				<div v-if="active == 2" class="activeView">
+					<div class="addSpeakerView" v-for="(item, index) in daysData" :key="index" style="border-bottom: 2px solid #EEEEEE;">
+						<div class="addView">
+							<div class="deleteDay" @click="deleteDay(index)">
+								<img src="../../img/icon_del@2x.png" class="deleteDay_icon" @click="deleteDay(index)" />
+							</div>
+							<div class="addDay">
+								<!-- 讲者信息 -->
+								<div class="showSetView_row" style="margin-left: -10px;margin-top: -10px;border-bottom: 1px solid rgba(42,145,139,0.1);">
+									<div class="row_detail">
+										讲者信息 {{index+1}}
+									</div>
+								</div>
+
+								<!-- 讲课时间 -->
+								<div class="showSetView_row" style="margin-left: -10px;margin-top: 10px;">
+									<div class="line"></div>
+									<div class="row_detail">
+										讲课时间<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+									</div>
+								</div>
+
+								<div class="add_title_row">
+									<div class="interva_bg_view">
+										<div class="qrIntervalView" @click="addStartDaysClick">
+											<van-field v-model="item.addStartDays" style="padding: 5px;margin-top: 5px;color: #888888;border: 0px solid;"
+											 readonly> </van-field>
+											<img src="../../img/icon_right@2x.png" class="interva_icon" />
+										</div>
+										<div class="qrInterval_zhi">—</div>
+										<div class="qrIntervalView" @click="addEndDaysClick">
+											<van-field v-model="item.addEndDays" style="padding: 5px;margin-top: 5px;color: #888888;" readonly>
+											</van-field>
+											<img src="../../img/icon_right@2x.png" class="interva_icon" />
+										</div>
+									</div>
+									<van-popup v-model="showAddStartDays" round position="bottom" :style="{ height: '46%' }" duration="0.1">
+										<div class="otherView">
+
+											<van-datetime-picker v-model="currentDate" type="datetime" title="选择讲课开始时间" :min-date="endMinDate" :max-date="endMaxDate"
+											 @confirm="onEndConfirm" @cancel="onEndCancel" @change="onEndChange" :formatter="formatter" />
+										</div>
+									</van-popup>
+									<van-popup v-model="showAddEndDays" round position="bottom" :style="{ height: '46%' }" duration="0.1">
+										<div class="otherView">
+
+											<van-datetime-picker v-model="currentDate" type="datetime" title="选择讲课结束时间" :min-date="endMinDate" :max-date="endMaxDate"
+											 @confirm="onEndConfirm" @cancel="onEndCancel" @change="onEndChange" :formatter="formatter" />
+										</div>
+									</van-popup>
+								</div>
+
+								<!-- 选择身份 -->
+								<div class="showSetView_row" style="margin-left: -10px;">
+									<div class="line"></div>
+									<div class="row_detail">
+										选择身份<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+									</div>
+								</div>
+								<div class="choseUser_title_row">
+									<!-- <div class="speaker" @click="choseUserClick(true,index)" :style="item.user.role == '讲者' ? 'background-color: #2A918B;color: #FFFFFF;' : 'color: #888888;background-color: #FFFFFF;border: 1px solid #888888;'">讲者</div>
+									<div class="chairman" @click="choseUserClick(false,index)" :style="item.user.role == '讲者' ? 'color: #888888;background-color: #FFFFFF;border: 1px solid #888888;'  : 'background-color: #2A918B;color: #FFFFFF;'">主席</div>
+ -->
+									<van-radio-group v-model="item.user.role" direction="horizontal">
+										<van-radio checked-color="#2A918B" name="1">讲者</van-radio>
+										<van-radio checked-color="#2A918B" name="2">主席</van-radio>
+									</van-radio-group>
+								</div>
+
+							</div>
+							<div class="addDetail">
+								<div class="addDetail_row">
+									<div class="addDetail_item" style="width: 100%;">
+										<div class="showSetView_row" style="margin-left: -10px;width: 150%;">
+											<div class="line"></div>
+											<div class="row_detail">
+												姓名 / 医院<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+											</div>
+										</div>
+										<div style="display: flex;flex-direction: row;">
+											<div class="addDetail_item_input" style="width:45%;">
+												<van-field v-model="item.user.name" placeholder="请输入姓名" style="padding: 5px;" />
+											</div>
+											
+											
+											<div class="addDetail_item_input" style="width:70%;margin-left: 10px;">
+											
+												  <van-field v-model="item.user.hospital" placeholder="请输入医院名称" style="padding: 5px;" />
+											
+											</div>
+										</div>
+										
+									</div>
+									<!-- <div class="addDetail_item" style="margin-top: 50px;">
+									</div> -->
+								</div>
+								<div class="addDetail_row">
+									<div class="addDetail_item" style="width: 100%;">
+										<div class="showSetView_row" style="margin-left: -10px;width: 150%;">
+											<div class="line"></div>
+											<div class="row_detail">
+													科室 / 职称<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+											</div>
+										</div>
+										<div style="display: flex;flex-direction: row;">
+											<div class="addDetail_item_input" style="width:45%;">
+												<van-field v-model="item.user.department" placeholder="请输入科室名称" style="padding: 5px;"> </van-field>
+											</div>
+											
+											
+											<div class="addDetail_item_input" style="width:70%;margin-left: 10px;">
+											  
+											     <van-field v-model="item.user.title" placeholder="请输入职称" style="padding: 5px;" />
+											</div>
+										</div>
+										
+									</div>
+									
+									
+								</div>
+								<div class="addDetail_row" style="margin-bottom: 20px;">
+									<div class="addDetail_item" style="width: 100%;">
+										<div class="showSetView_row" style="margin-left: -10px;">
+											<div class="line"></div>
+											<div class="row_detail" style="width: 100%;">
+												DoctorCode<span style="color: #EF4722;margin-left: 10px;font-size: 12px;">(*必填)</span>
+											</div>
+										</div>
+
+										<div class="addDetail_item_input" style="width: 100%;">
+											<van-field v-model="item.user.oce" placeholder="请输入OCE医生编码" style="padding: 5px;" />
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="addSpeakerBtn" @click="addDoctorClick">
+						<!-- 添加讲者/主席 -->
+						<img src="../../img/icon_add@2x.png" style="width: 20px;height: 20px;" />
+					</div>
+
+					<div class="nextBtn" @click="nextClick(3)">
+						完成
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script src="../../utils/base.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var url = location.search; //获取url中"?"符后的字串 ('?modFlag=business&role=1')
+			var data;
+			var theRequest = new Object();
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1); //substr()方法返回从参数值开始到结束的字符串；  
+				var strs = str.split("&");
+				for (var i = 0; i < strs.length; i++) {
+					theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
+				}
+				data = theRequest;
+			}
+			console.log(data);
+			new Vue({
+				el: '.app',
+				data: {
+					// 导航相关
+					active: 1,
+					doActive: 1,
+
+					// 基本信息相关
+					type: 0,
+					activity_name: '',
+					activity_initial: '',
+					showSD: false,
+					act_number: -1,
+					option1: [{
+							text: '请选择',
+							value: -1
+						}, {
+							text: 'SD-Normal-20190086 / 控糖我来说',
+							value: 0
+						},
+						{
+							text: 'SD-Normal-20190075 / Blue county-E名医下基层（病例分享会）',
+							value: 1
+						},
+						{
+							text: 'SD-Normal-20190099 / 慢病管理-院级交流研讨培训班',
+							value: 2
+						},
+						{
+							text: 'SD-Normal-20190077 / SMART-E专家下基层',
+							value: 3
+						},
+						{
+							text: 'SD-Normal-20190065 / 天津远程病例讨论会',
+							value: 4
+						},
+						{
+							text: 'SD-simple-20200101 / 天津线上系列沙龙论坛',
+							value: 5
+						},
+						{
+							text: 'SD-Normal-20190095 / 天津CCD项目2020',
+							value: 6
+						},
+						{
+							text: 'SD-Normal-20200038 / 天津心血管代谢疾病诊疗规范培训班',
+							value: 7
+						},
+						{
+							text: 'SD-Normal-20190075 / 蓝色县域院长沙龙',
+							value: 8
+						},
+						{
+							text: 'SD-Normal-20200049 / 探索佳——中国糖尿病患者全面血糖管理探索计划',
+							value: 9
+						},
+						{
+							text: 'SD-Normal-20190009 / 天津“城市改变糖尿病”药师培训项目',
+							value: 10
+						},
+					],
+					topic_number: -1,
+					option2: [{
+						text: '请在此选择本次 RemoteCall 的话题',
+						value: -1
+					}, {
+						text: '人胰岛素升级',
+						value: 0
+					}, {
+						text: '甘精胰岛素优化',
+						value: 1
+					}, {
+						text: '预混胰岛素起始',
+						value: 2
+					}, ],
+					sd_remarks: '',
+					isEmeeting: false,
+					isOpen: false,
+					isSignUp: true,
+					showSignUp: false,
+					isSpeaker: true,
+					daysData: [{
+						addStartDays: '2021/1/4 8:30',
+						addEndDays: '2021/1/4 17:00',
+						user: {
+							role: '讲者',
+							name: '',
+							hospital: '',
+							department: '',
+							title: '',
+							oce: ''
+						}
+					}],
+					showAddStartDays: false,
+					showAddEndDays: false,
+
+					// 基本信息相关
+					scheduleFileList: [
+						// Uploader 根据文件后缀来判断是否为图片文件
+						// 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+						// {
+						// 	url: 'https://cloud-image',
+						// 	isImage: true
+						// },
+					],
+					headFileList: [],
+					emailFileList: [],
+					activity_theme: '',
+					showChoseCity: false,
+					fieldCityValue: '',
+					activity_address: '',
+					columns: [{
+							text: '浙江',
+							children: [{
+									text: '杭州',
+									children: [{
+										text: '西湖区'
+									}, {
+										text: '余杭区'
+									}],
+								},
+								{
+									text: '温州',
+									children: [{
+										text: '鹿城区'
+									}, {
+										text: '瓯海区'
+									}],
+								},
+							],
+						},
+						{
+							text: '福建',
+							children: [{
+									text: '福州',
+									children: [{
+										text: '鼓楼区'
+									}, {
+										text: '台江区'
+									}],
+								},
+								{
+									text: '厦门',
+									children: [{
+										text: '思明区'
+									}, {
+										text: '海沧区'
+									}],
+								},
+							],
+						},
+					],
+					fieldStartValue: '',
+					showChoseStart: false,
+					startMinDate: new Date(2020, 0, 1),
+					startMaxDate: new Date(2025, 10, 1),
+					currentDate: new Date(),
+
+					fieldEndValue: '',
+					showChoseEnd: false,
+					endMinDate: new Date(2020, 0, 1),
+					endMaxDate: new Date(2025, 10, 1),
+					nnNum: '',
+					noNNnum: '',
+					isWXSignIn: false,
+					isSchedule: true,
+				},
+				components: {
+
+				},
+				created: function() {
+					var that = this;
+					var type = sessionStorage.getItem('type');
+					that.type = type;
+					if (that.type == '1') {
+						that.showSD = true;
+					}
+					var time = new Date().toLocaleString().substring(0, 8);
+
+					console.log(time);
+					for (var i = 0; i < that.daysData.length; i++) {
+						that.daysData[i].addStartDays = time + ' 8:30';
+						that.daysData[i].addEndDays = time + ' 17:00';
+					}
+				},
+
+				methods: {
+					onClickLeft(e) {
+						var calendar = sessionStorage.getItem('calendar');
+						if (calendar == 'true') {
+							window.location.href = "../calendar/index.html"
+						} else {
+							window.location.href = "../meeting/index.html"
+						}
+					},
+					tabClick(e) {
+						console.log(e);
+						var that = this;
+						if (e <= that.doActive) {
+							that.active = e;
+						} else {
+							that.$toast({
+								message: '前面的步骤还没有完成哦~',
+								icon: '../../img/oe_logo@2x.png',
+							});
+						}
+					},
+					nextClick(e) {
+						console.log(e);
+						var that = this;
+						if (e == 3) {
+							var calendar = sessionStorage.getItem('calendar');
+							if (calendar == 'true') {
+								window.location.href = "../calendar/index.html"
+							} else {
+								window.location.href = "../meeting/index.html"
+							}
+						} else {
+							that.doActive = e;
+							that.active = e;
+						}
+
+					},
+					// 直播设置相关
+					eMeetingSwitch(e) {
+						var that = this;
+						that.doActive = 0;
+					},
+					openSwitch(e) {
+						console.log(e);
+					},
+					signUpSwitch(e) {
+						var that = this;
+						if (e == false) {
+							that.showSignUp = true;
+							that.isSignUp = true;
+						}
+					},
+					closeSignUp() {
+						var that = this;
+						that.showSignUp = false;
+						that.isSignUp = false;
+					},
+					choseUserClick(e, index) {
+						var that = this;
+						if (e == true) {
+							that.daysData[index].user.role = '讲者';
+						} else {
+							that.daysData[index].user.role = '主席';
+						}
+					},
+					addStartDaysClick(e) {
+						var that = this;
+						that.showAddStartDays = true;
+					},
+					addEndDaysClick(e) {
+						var that = this;
+						that.showAddEndDays = true;
+					},
+
+					deleteDay(index) {
+						console.log(index);
+						var that = this;
+						vant.Dialog.confirm({
+								title: '提示',
+								message: '是否删除此信息？',
+								confirmButtonColor: '#2A918B'
+							})
+							.then(() => {
+								// on confirm
+								that.daysData.splice(index, 1);
+							})
+							.catch(() => {
+								// on cancel
+							});
+					},
+					addDoctorClick(e) {
+						console.log('添加医生');
+						var that = this;
+						var data = {
+							addStartDays: '2021/1/4 8:30',
+							addEndDays: '2021/1/4 17:00',
+							user: {
+								role: '讲者',
+								name: '',
+								hospital: '',
+								department: '',
+								title: '',
+								oce: ''
+							}
+						};
+						that.daysData.push(data);
+					},
+
+					// 基本信息相关
+					afterRead(file) {
+						// 此时可以自行将文件上传至服务器
+						console.log(file);
+					},
+					showChoseCityClick(e) {
+						var that = this;
+						that.showChoseCity = true;
+					},
+					onCityConfirm(e) {
+						var that = this;
+						console.log(e);
+						that.fieldCityValue = e[0] + ' / ' + e[1] + ' / ' + e[2];
+						that.showChoseCity = false;
+					},
+					onCityCancel(e) {
+						var that = this;
+						that.showChoseCity = false;
+					},
+					onCityChange(e) {
+						var that = this;
+						console.log(e);
+					},
+					showChoseStartClick(e) {
+						var that = this;
+						that.showChoseStart = true;
+					},
+					onStartConfirm(e) {
+						var that = this;
+						that.showChoseStart = false;
+						that.fieldStartValue = formatTime(e);
+					},
+					onStartCancel(e) {
+						var that = this;
+						that.showChoseStart = false;
+					},
+					onStartChange(e) {
+						var that = this;
+						console.log(e);
+					},
+					formatter(type, val) {
+						if (type === 'year') {
+							return `${val}年`;
+						} else if (type === 'month') {
+							return `${val}月`;
+						} else if (type === 'day') {
+							return `${val}日`;
+						} else if (type === 'hour') {
+							return `${val}时`;
+						} else if (type === 'minute') {
+							return `${val}分`;
+						}
+						return val;
+					},
+					showChoseEndClick(e) {
+						var that = this;
+						that.showChoseEnd = true;
+					},
+					onEndConfirm(e) {
+						var that = this;
+						console.log(e);
+						that.showChoseEnd = false;
+						that.fieldEndValue = formatTime(e);
+					},
+					onEndCancel(e) {
+						var that = this;
+						that.showChoseEnd = false;
+					},
+					onEndChange(e) {
+						var that = this;
+					},
+					WXSignInSwitch(e) {
+						console.log(e);
+					},
+					scheduleSwitch(e) {
+						console.log(e);
+					}
+				},
+				computed: {},
+			});
+
+			formatNumber = n => {
+				n = n.toString();
+				return n[1] ? n : '0' + n
+			};
+			// 时间格式化
+			formatTime = date => {
+				const year = date.getFullYear();
+				const month = date.getMonth() + 1;
+				const day = date.getDate();
+				const hour = date.getHours()
+				const minute = date.getMinutes()
+				const second = date.getSeconds()
+				return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+			};
+		</script>
+	</body>
+</html>

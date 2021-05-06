@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>{$article.title}</title>
+  <link rel="stylesheet" href="/static/css/weui.min.css">
+  <link rel="stylesheet" href="/static/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+  <style>
+    html,body{background-color:#fff;}
+    .weui-article{padding-bottom:20px;}
+    #wecall-article section.billboard img{display:block;margin:0;padding:0;}
+  </style>
+</head>
+<body>
+<article class="weui-article">
+  <h1>{$article.title}</h1>
+  <section class="article-container" id="wecall-article">
+    {$article.content}
+  </section>
+</article>
+<script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-weui.min.js"></script>
+<script type="text/javascript" src="/static/js/swiper.min.js"></script>
+<script type="text/javascript" src="/static/js/layer/layer.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script type="text/javascript">
+  $(function() {
+// 初始化图片点击相册
+    var photos = $('#wecall-article img');
+    var _gallery = [], _index = 0;
+
+    window.onload = function () {
+      init_gallery();
+    }
+
+    function init_gallery() {
+      // console.log('init_gallery');
+      photos.each(function() {
+        var _photo = $(this);
+        if(_photo.width() >= 300 && _photo.height() >= 100) {
+          _gallery.push({
+            image: _photo.attr('src'),
+            caption: '{$article.title}'
+          });
+          _photo.data('index', _index);
+          _index++;
+        }
+      });
+      var gallery = $.photoBrowser({
+        items: _gallery
+      });
+      photos.click(function() {
+        var _photo = $(this);
+        if(_photo.width() >= 300 && _photo.height() >= 100) {
+          var index = _photo.data('index');
+          gallery.open(index);
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>

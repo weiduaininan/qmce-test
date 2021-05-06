@@ -1,0 +1,230 @@
+/* 全局 */
+html {
+	background-color: #F6F8FA;
+}
+
+.content {
+	width: 100%;
+	margin-top: 48px;
+}
+
+/* 导航 */
+.van-nav-bar {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 2000;
+	background-color: #D9D9D9;
+}
+
+.van-tabbar-item__icon img {
+	height: 25px;
+}
+
+.van-hairline--bottom::after {
+	border-bottom-width: 0px;
+}
+
+.van-nav-bar__title {
+	color: #2A918B;
+	font-weight: bold;
+}
+
+.van-icon-arrow-left::before {
+	color: #000000;
+}
+
+/* tabbar */
+.van-tabbar-item-center {
+	width: 60px;
+	height: 60px !important;
+	margin-top: -28px;
+}
+
+.van-tabbar--fixed {
+	position: fixed;
+	bottom: -4px;
+	left: 0;
+	height: 64px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* background-image: url(../img/tabbar/tabbar_bg@2x.png); */
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: rgba(255, 255, 255);
+	z-index: 9999999999;
+}
+
+.van-tabbar-item--active {
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.van-tabbar-item__icon {
+	position: relative;
+	margin-bottom: 4px;
+	font-size: 22px;
+	/* margin-top: 10px; */
+}
+
+.van-hairline--top-bottom::after {
+	border: 0px solid #FFFFFF;
+}
+
+/* 搜索栏 */
+.van-search {
+	position: fixed;
+	width: 100%;
+	z-index: 2000;
+	padding-top: 10px;
+}
+
+.van-icon-search::before {
+	color: #2A918B;
+	display: none;
+}
+
+.van-field__left-icon {
+	background-image: url(../img/icon_search@2x.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.van-field__left-icon {
+	width: 16px;
+	height: 16px;
+	margin-top: 3px;
+}
+
+.van-field__value {
+	margin-left: 5px;
+}
+
+.van-search__action {
+	padding: 0 8px;
+	font-size: 14px;
+	line-height: 31px;
+	cursor: pointer;
+	user-select: none;
+	position: absolute;
+	right: 16px;
+	bottom: 10px;
+	background: #2A918B;
+	color: #fff;
+	margin: 2px;
+	border-radius: 4px;
+}
+
+.van-search__content {
+	border: 5px;
+	border: 1px solid #2A918B;
+	margin-right: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content_container_no {
+	height: 375px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.content_container_no img {
+	width: 60.25px;
+	height: 53.75px;
+}
+
+.content_container_no_Text {
+	font-size: 13px;
+	color: #888;
+	margin-top: 15px;
+}
+
+.iframe {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	border-width: 0px;
+	border-style: inset;
+	border-color: initial;
+	border-image: initial;
+	z-index: 1;
+	margin-top: 49px;
+}
+
+.van-popup--bottom {
+	bottom: -1px;
+}
+
+.van-picker__toolbar {
+	margin-top: 0px;
+}
+
+.van-button--info {
+	background-color: #2A918B;
+	min-width: 200px;
+	border: 0px solid #FFFFFF;
+}
+
+.van-overlay {
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.van-popup--bottom.van-popup--round {
+	border-radius: 10px 10px 0 0;
+}
+
+.van-popup--center.van-popup--round {
+	border-radius: 10px;
+}
+
+.van-icon__image {
+	width: 90px;
+	height: 90px;
+}
+
+.van-toast {
+	background-color: rgba(0, 0, 0, 0.6);
+	color: #FFFFFF;
+	width: 120px;
+}
+
+.font-14 {
+	font-size: 14px;
+}
+
+.margin-top-bottom-10 {
+	margin: 10px 0px;
+}
+
+.van-icon-cross::before {
+	content: '\F042';
+	position: absolute;
+	z-index: 9999999999;
+	right: 15px;
+}
+
+/* 数据为空 */
+.content_container_no {
+  height: 750rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content_container_no image {
+  width: 120.5rpx;
+  height: 107.5rpx;
+}
+
+.content_container_no_Text {
+  font-size: 26rpx;
+  color: #888;
+  margin-top: 30rpx;
+}

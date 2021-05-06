@@ -1,0 +1,285 @@
+/**
+ * Zabuto Calendar
+ */
+
+div.zabuto_calendar {
+	margin: 0;
+	padding: 0;
+	margin-top: -4px;
+}
+
+div.zabuto_calendar .table {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	box-shadow: 0 2px 10px rgba(125, 126, 128, .16);
+}
+
+div.zabuto_calendar .table th,
+div.zabuto_calendar .table td {
+	padding: 4px 2px;
+	text-align: center;
+}
+
+div.zabuto_calendar .table tr th,
+div.zabuto_calendar .table tr td {
+	background-color: #ffffff;
+}
+
+div.zabuto_calendar .table tr:last-child {
+	border-bottom: 1px solid #dddddd;
+}
+
+/* month header */
+div.zabuto_calendar .table tr.calendar-month-header td {
+	background-color: #fafafa;
+	font-weight: bold;
+}
+
+div.zabuto_calendar .table tr.calendar-month-header td span {
+	cursor: pointer;
+	display: inline-block;
+	padding-bottom: 10px;
+	color: #2A918B;
+}
+
+div.zabuto_calendar .table tr.calendar-month-header td {
+	padding-top: 12px;
+	padding-bottom: 4px;
+}
+
+div.zabuto_calendar .table-bordered tr.calendar-month-header td {
+	border-left: 0;
+	border-right: 0;
+}
+
+div.zabuto_calendar .table-bordered tr.calendar-month-header td:first-child {
+	border-left: 1px solid #dddddd;
+}
+
+div.zabuto_calendar div.calendar-month-navigation {
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	padding-top: 5px;
+}
+
+/* day-of-week header */
+div.zabuto_calendar .table tr.calendar-dow-header th {
+	background-color: #f0f0f0;
+}
+
+div.zabuto_calendar tr.calendar-dow-header th,
+div.zabuto_calendar tr.calendar-dow td {
+	width: 14%;
+}
+
+/* day */
+div.zabuto_calendar .table tr td div.day {
+	margin: 9px;
+	height: 30px;
+}
+
+/* actions and events */
+div.zabuto_calendar .table tr td.event div.day,
+div.zabuto_calendar ul.legend li.event {
+	background-color: #fff0c3;
+}
+
+div.zabuto_calendar .table tr td.dow-clickable,
+div.zabuto_calendar .table tr td.event-clickable {
+	cursor: pointer;
+}
+
+/* badge */
+div.zabuto_calendar .badge-today,
+div.zabuto_calendar div.legend span.badge-today {
+	/* background-color: #357ebd; */
+	/* color: #ffffff; */
+	text-shadow: none;
+	height: 20px;
+	width: 20px;
+	border-radius: 6px;
+	z-index: 3;
+}
+
+div.zabuto_calendar .badge-event,
+div.zabuto_calendar div.legend span.badge-event {
+	/* background-color: #ff9b08; */
+	/* color: #ffffff; */
+	text-shadow: none;
+}
+
+div.zabuto_calendar .badge-event {
+	font-size: 0.95em;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 4px;
+}
+
+/* legend */
+div.zabuto_calendar div.legend {
+	margin-top: 5px;
+	text-align: right;
+}
+
+div.zabuto_calendar div.legend span {
+	color: #999999;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+div.zabuto_calendar div.legend span.legend-text:after,
+div.zabuto_calendar div.legend span.legend-block:after,
+div.zabuto_calendar div.legend span.legend-list:after,
+div.zabuto_calendar div.legend span.legend-spacer:after {
+	content: ' ';
+}
+
+div.zabuto_calendar div.legend span.legend-spacer {
+	padding-left: 25px;
+}
+
+div.zabuto_calendar ul.legend>span {
+	padding-left: 2px;
+}
+
+div.zabuto_calendar ul.legend {
+	display: inline-block;
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
+}
+
+div.zabuto_calendar ul.legend li {
+	display: inline-block;
+	height: 11px;
+	width: 11px;
+	margin-left: 5px;
+}
+
+div.zabuto_calendar ul.legend,
+div.zabuto_calendar ul.legend li:first-child {
+	margin-left: 7px;
+}
+
+div.zabuto_calendar ul.legend li:last-child {
+	margin-right: 5px;
+}
+
+div.zabuto_calendar div.legend span.badge {
+	font-size: 0.9em;
+	border-radius: 5px 5px 5px 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 2px;
+	padding-bottom: 3px;
+}
+
+/* responsive */
+@media (max-width: 979px) {
+
+	div.zabuto_calendar .table th,
+	div.zabuto_calendar .table td {
+		padding: 2px 1px;
+	}
+}
+
+.calendar-dow-header {
+	box-shadow: 0 2px 10px rgba(125, 126, 128, .16);
+}
+
+div.zabuto_calendar .table {
+	height: 400px;
+}
+
+div.zabuto_calendar .badge-today,
+div.zabuto_calendar div.legend span.badge-today {
+	/* background-color: #2A918B;
+	color: #ffffff; */
+	padding: 6px;
+	text-shadow: none;
+	z-index: 1;
+}
+
+
+div.zabuto_calendar .badge-event,
+div.zabuto_calendar div.legend span.badge-event {
+	/* background-color: #91CFCB !important; */
+	/* color: #FFFFFF !important; */
+	padding: 0px;
+	text-shadow: none;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	display: block;
+	line-height: 30px;
+	border-radius: 6px;
+	opacity: 1;
+	/* border-radius: 50%; */
+}
+
+div.zabuto_calendar .table tr td div.day {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div.zabuto_calendar .table tr.calendar-dow-header th {
+    background-color: #ffffff;
+	font-size: 14px;
+}
+
+div.zabuto_calendar .table tr.calendar-month-header td{
+	background-color: #FFFFFF;
+}
+
+.calendar-month-header{
+	box-shadow: 0 2px 10px rgba(125, 126, 128, .16);
+}
+
+.fa{
+	font-size: 20px !important;
+}
+
+div.zabuto_calendar .table tr td div.day div.chose{
+	background-color: #005DD7;
+}
+
+.chose{
+	background-color: #22AF4A;
+	color: #FFFFFF;
+	border-radius: 6px;
+	z-index: 2;
+}
+
+div.zabuto_calendar .table tr td.event div.day, div.zabuto_calendar ul.legend li.event{
+	/* background-color: rgba(43,87,154,0.1) !important;
+	    color: #02ADFE !important;
+	    padding: 0px;
+	    text-shadow: none;
+	    width: 30px;
+	    height: 30px;
+	    text-align: center;
+	    display: block;
+	    line-height: 30px;
+	    border-radius: 50%; */
+}
+
+.bottom_today_badge {
+  width: 8px;
+  height: 8px;
+  background-color: #DF1B29;
+  border-radius: 50%;
+  margin-left: 38%;
+  margin-top: 8px;
+}
+.bottom_badge{
+  width: 8px;
+  height: 8px;
+  background-color: #22AF4A;
+  border-radius: 50%;
+  /* position: relative; */
+  margin-left: 38%;
+  margin-top: 3px;
+}

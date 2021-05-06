@@ -1,0 +1,2596 @@
+---------------------------------------------------------------
+
+[2021-05-06T11:10:21+08:00] 127.0.0.1 GET qmce.cn/
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+---------------------------------------------------------------
+
+[2021-05-06T11:10:22+08:00] 127.0.0.1 GET qmce.cn/
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+---------------------------------------------------------------
+
+[2021-05-06T11:10:30+08:00] 127.0.0.1 GET qmce.cn/
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+---------------------------------------------------------------
+
+[2021-05-06T11:11:44+08:00] 127.0.0.1 GET qmce.cn/
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+---------------------------------------------------------------
+
+[2021-05-06T11:11:45+08:00] 127.0.0.1 GET qmce.cn/
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+---------------------------------------------------------------
+
+[2021-05-06T11:12:58+08:00] 127.0.0.1 GET qmce.cn/
+[运行时间：0.087359s] [吞吐率：11.45req/s] [内存消耗：435.55kb] [文件加载：55]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)[/Users/liunan/htdocs/qmce/vendor/thinkphp/library/think/db/Connection.php:528]
+---------------------------------------------------------------
+
+[2021-05-06T11:14:11+08:00] 127.0.0.1 GET qmce.cn/
+[运行时间：0.081541s] [吞吐率：12.26req/s] [内存消耗：503.31kb] [文件加载：58]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)[/Users/liunan/htdocs/qmce/vendor/thinkphp/library/think/db/Connection.php:528]
+---------------------------------------------------------------
+
+[2021-05-06T11:14:39+08:00] 127.0.0.1 GET qmce.cn/
+[运行时间：0.281043s] [吞吐率：3.56req/s] [内存消耗：732.76kb] [文件加载：78]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001452s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.029713s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.014905s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.041467s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.013659s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `app` = 'emt' [ RunTime:0.007331s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 10.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('') ORDER BY `list_order` ASC [ RunTime:0.001215s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1309792046_  AND `hook` IN (:ThinkBind_2_1897331314_,:ThinkBind_3_601487644_,:ThinkBind_4_739268540_,:ThinkBind_5_933695144_,:ThinkBind_6_1277680319_,:ThinkBind_7_773367695_,:ThinkBind_8_942604921_,:ThinkBind_9_1274064575_,:ThinkBind_10_1816024200_,:ThinkBind_11_936596451_,:ThinkBind_12_115304351_,:ThinkBind_13_830130586_,:ThinkBind_14_1503989688_,:ThinkBind_15_474497067_,:ThinkBind_16_1758690284_,:ThinkBind_17_956217154_,:ThinkBind_18_1583851671_,:ThinkBind_19_590348535_,:ThinkBind_20_1474636209_,:ThinkBind_21_2123969885_,:ThinkBind_22_922494076_,:ThinkBind_23_1926379728_,:ThinkBind_24_1632920650_,:ThinkBind_25_91202634_,:ThinkBind_26_1378568062_,:ThinkBind_27_729878669_,:ThinkBind_28_2045540198_,:ThinkBind_29_151054885_) ORDER BY `list_order` ASC [Using where; Using filesort]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_641092563_  AND `hook` IN ('') ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:15:10+08:00] 127.0.0.1 GET qmce.cn/coaching
+[运行时间：0.127136s] [吞吐率：7.87req/s] [内存消耗：764.76kb] [文件加载：82]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015044s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.017544s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.007811s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.002121s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001281s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `app` = 'coaching' [ RunTime:0.000860s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 10.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('') ORDER BY `list_order` ASC [ RunTime:0.000644s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.003854s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.002091s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'site_info' LIMIT 1 [ RunTime:0.000647s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_option',
+  'partitions' => NULL,
+  'type' => 'const',
+  'possible_keys' => 'option_name',
+  'key' => 'option_name',
+  'key_len' => '258',
+  'ref' => 'const',
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => NULL,
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_770553460_  AND `hook` IN (:ThinkBind_2_1455154265_,:ThinkBind_3_240761205_,:ThinkBind_4_1814974852_,:ThinkBind_5_1094767244_,:ThinkBind_6_1790935476_,:ThinkBind_7_1156938517_,:ThinkBind_8_320169529_,:ThinkBind_9_431155346_,:ThinkBind_10_1843795349_,:ThinkBind_11_1473334012_,:ThinkBind_12_687490540_,:ThinkBind_13_1133864351_,:ThinkBind_14_1541799963_,:ThinkBind_15_1760689559_,:ThinkBind_16_1467155800_,:ThinkBind_17_1422122512_,:ThinkBind_18_164578989_,:ThinkBind_19_993832514_,:ThinkBind_20_1469387092_,:ThinkBind_21_463188115_,:ThinkBind_22_914643845_,:ThinkBind_23_1205789763_,:ThinkBind_24_1846566990_,:ThinkBind_25_739228132_,:ThinkBind_26_260664613_,:ThinkBind_27_2062156986_,:ThinkBind_28_1923284555_,:ThinkBind_29_1979226699_) ORDER BY `list_order` ASC [Using where; Using filesort]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_695956104_  AND `hook` IN ('') ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:15:10+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.047178s] [吞吐率：21.20req/s] [内存消耗：760.00kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001048s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.003674s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.000834s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.002540s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001226s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_828835707_  AND `hook` IN (:ThinkBind_2_900893921_,:ThinkBind_3_1133153178_,:ThinkBind_4_1549443643_,:ThinkBind_5_291996935_,:ThinkBind_6_455686375_,:ThinkBind_7_885188558_,:ThinkBind_8_621751632_,:ThinkBind_9_1683741670_,:ThinkBind_10_1063639783_,:ThinkBind_11_1641843880_,:ThinkBind_12_1309046418_,:ThinkBind_13_1320013173_,:ThinkBind_14_947749067_,:ThinkBind_15_873312755_,:ThinkBind_16_1283973379_,:ThinkBind_17_1285933511_,:ThinkBind_18_92568783_,:ThinkBind_19_1584005150_,:ThinkBind_20_2123102846_,:ThinkBind_21_1566495814_,:ThinkBind_22_1691869854_,:ThinkBind_23_108697204_,:ThinkBind_24_267816724_,:ThinkBind_25_457865576_,:ThinkBind_26_2119144704_,:ThinkBind_27_1712493157_,:ThinkBind_28_718131682_,:ThinkBind_29_1445191252_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:16:26+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.095905s] [吞吐率：10.43req/s] [内存消耗：760.06kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001165s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.005711s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.006434s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.005588s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.005969s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_25654432_  AND `hook` IN (:ThinkBind_2_1933502892_,:ThinkBind_3_1824054629_,:ThinkBind_4_1770414913_,:ThinkBind_5_237119187_,:ThinkBind_6_625245765_,:ThinkBind_7_904088204_,:ThinkBind_8_386600337_,:ThinkBind_9_1068069127_,:ThinkBind_10_460788404_,:ThinkBind_11_1330818020_,:ThinkBind_12_860075015_,:ThinkBind_13_521374866_,:ThinkBind_14_610402580_,:ThinkBind_15_248495240_,:ThinkBind_16_890873774_,:ThinkBind_17_587274708_,:ThinkBind_18_1375621220_,:ThinkBind_19_1593550574_,:ThinkBind_20_1588338113_,:ThinkBind_21_509224900_,:ThinkBind_22_1562986601_,:ThinkBind_23_2135122975_,:ThinkBind_24_192315442_,:ThinkBind_25_1943788913_,:ThinkBind_26_1494253360_,:ThinkBind_27_77930946_,:ThinkBind_28_190875019_,:ThinkBind_29_378394813_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:17:05+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.108820s] [吞吐率：9.19req/s] [内存消耗：759.71kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008869s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.015440s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.003303s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003564s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001763s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_17645657_  AND `hook` IN (:ThinkBind_2_286824288_,:ThinkBind_3_243040255_,:ThinkBind_4_418257408_,:ThinkBind_5_291435971_,:ThinkBind_6_2132485221_,:ThinkBind_7_1111042896_,:ThinkBind_8_531346820_,:ThinkBind_9_1227946629_,:ThinkBind_10_2018543676_,:ThinkBind_11_1280779850_,:ThinkBind_12_1141188257_,:ThinkBind_13_475983243_,:ThinkBind_14_1771310224_,:ThinkBind_15_557642622_,:ThinkBind_16_1149170310_,:ThinkBind_17_675543477_,:ThinkBind_18_1965318015_,:ThinkBind_19_1630455924_,:ThinkBind_20_629922093_,:ThinkBind_21_1230290602_,:ThinkBind_22_1001510552_,:ThinkBind_23_1463525064_,:ThinkBind_24_1395372049_,:ThinkBind_25_1005394925_,:ThinkBind_26_2116152631_,:ThinkBind_27_499453851_,:ThinkBind_28_824125606_,:ThinkBind_29_342196115_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:17:27+08:00] 127.0.0.1 GET qmce.cn/coaching/mr/index
+[运行时间：0.150083s] [吞吐率：6.66req/s] [内存消耗：760.03kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011045s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.028812s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.003166s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.005264s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001904s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1621915599_  AND `hook` IN (:ThinkBind_2_1568921980_,:ThinkBind_3_143099660_,:ThinkBind_4_1358264537_,:ThinkBind_5_528256660_,:ThinkBind_6_126971931_,:ThinkBind_7_626641437_,:ThinkBind_8_243395808_,:ThinkBind_9_524555438_,:ThinkBind_10_1383632716_,:ThinkBind_11_389842911_,:ThinkBind_12_1452377262_,:ThinkBind_13_399502317_,:ThinkBind_14_566176006_,:ThinkBind_15_1532079947_,:ThinkBind_16_1098701392_,:ThinkBind_17_763320368_,:ThinkBind_18_48735407_,:ThinkBind_19_2028525529_,:ThinkBind_20_704894882_,:ThinkBind_21_824430779_,:ThinkBind_22_1552449115_,:ThinkBind_23_1940221137_,:ThinkBind_24_1425274572_,:ThinkBind_25_1392538478_,:ThinkBind_26_1884972509_,:ThinkBind_27_1377037963_,:ThinkBind_28_881284813_,:ThinkBind_29_1506465705_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:17:34+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.154252s] [吞吐率：6.48req/s] [内存消耗：759.61kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002723s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.032274s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001518s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.007622s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.002035s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_873931666_  AND `hook` IN (:ThinkBind_2_1717602122_,:ThinkBind_3_1133234932_,:ThinkBind_4_2138106459_,:ThinkBind_5_1663777694_,:ThinkBind_6_1220961058_,:ThinkBind_7_1452552137_,:ThinkBind_8_207076572_,:ThinkBind_9_1894912907_,:ThinkBind_10_318276876_,:ThinkBind_11_2016250101_,:ThinkBind_12_1063117886_,:ThinkBind_13_1646120673_,:ThinkBind_14_1134718739_,:ThinkBind_15_1958279364_,:ThinkBind_16_1959863114_,:ThinkBind_17_1065687096_,:ThinkBind_18_296340843_,:ThinkBind_19_886355436_,:ThinkBind_20_201077844_,:ThinkBind_21_164399669_,:ThinkBind_22_1017266071_,:ThinkBind_23_1032306305_,:ThinkBind_24_806343553_,:ThinkBind_25_2123552895_,:ThinkBind_26_1484544095_,:ThinkBind_27_426701601_,:ThinkBind_28_1130018378_,:ThinkBind_29_1370941965_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:18:35+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.070631s] [吞吐率：14.16req/s] [内存消耗：760.59kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000978s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.007791s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.003898s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.005835s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001609s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1761720551_  AND `hook` IN (:ThinkBind_2_256135700_,:ThinkBind_3_18401625_,:ThinkBind_4_1377108649_,:ThinkBind_5_3335302_,:ThinkBind_6_160315476_,:ThinkBind_7_1725032901_,:ThinkBind_8_1206300470_,:ThinkBind_9_1370391625_,:ThinkBind_10_2109005040_,:ThinkBind_11_561861908_,:ThinkBind_12_212325838_,:ThinkBind_13_1238708587_,:ThinkBind_14_574480298_,:ThinkBind_15_1409515764_,:ThinkBind_16_1743195016_,:ThinkBind_17_1765420414_,:ThinkBind_18_2030085639_,:ThinkBind_19_144713280_,:ThinkBind_20_2146038315_,:ThinkBind_21_1939624368_,:ThinkBind_22_657491171_,:ThinkBind_23_1015394017_,:ThinkBind_24_1486536047_,:ThinkBind_25_1834180925_,:ThinkBind_26_945346099_,:ThinkBind_27_1801132673_,:ThinkBind_28_1365695655_,:ThinkBind_29_1556427820_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:18:38+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.064976s] [吞吐率：15.39req/s] [内存消耗：759.80kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001501s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.005239s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001361s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.004919s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.002087s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1133010997_  AND `hook` IN (:ThinkBind_2_1574890162_,:ThinkBind_3_72155192_,:ThinkBind_4_142537506_,:ThinkBind_5_1773482791_,:ThinkBind_6_611696264_,:ThinkBind_7_849253016_,:ThinkBind_8_1368129788_,:ThinkBind_9_953674190_,:ThinkBind_10_577049223_,:ThinkBind_11_29872911_,:ThinkBind_12_702367322_,:ThinkBind_13_1623690763_,:ThinkBind_14_1555005177_,:ThinkBind_15_917592241_,:ThinkBind_16_581888978_,:ThinkBind_17_361628120_,:ThinkBind_18_656621119_,:ThinkBind_19_1137934766_,:ThinkBind_20_2098036549_,:ThinkBind_21_2077068184_,:ThinkBind_22_1044155956_,:ThinkBind_23_254100396_,:ThinkBind_24_990969358_,:ThinkBind_25_1149092857_,:ThinkBind_26_1317022597_,:ThinkBind_27_681105484_,:ThinkBind_28_197892440_,:ThinkBind_29_464132120_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:18:49+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.117622s] [吞吐率：8.50req/s] [内存消耗：759.81kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000939s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.023708s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001276s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.002760s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001365s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_169512755_  AND `hook` IN (:ThinkBind_2_303398363_,:ThinkBind_3_1425110517_,:ThinkBind_4_1557820342_,:ThinkBind_5_377755799_,:ThinkBind_6_961857311_,:ThinkBind_7_708821387_,:ThinkBind_8_2100234433_,:ThinkBind_9_144121637_,:ThinkBind_10_471373028_,:ThinkBind_11_1601649119_,:ThinkBind_12_1016793347_,:ThinkBind_13_543140630_,:ThinkBind_14_126492510_,:ThinkBind_15_1719654347_,:ThinkBind_16_1566240546_,:ThinkBind_17_106196540_,:ThinkBind_18_327673373_,:ThinkBind_19_441531299_,:ThinkBind_20_1444749495_,:ThinkBind_21_1872712293_,:ThinkBind_22_1501735343_,:ThinkBind_23_1937432878_,:ThinkBind_24_394777465_,:ThinkBind_25_844008377_,:ThinkBind_26_1991285067_,:ThinkBind_27_813624490_,:ThinkBind_28_1483014012_,:ThinkBind_29_130401238_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:19:55+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.146063s] [吞吐率：6.85req/s] [内存消耗：759.97kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002417s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.050529s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.008280s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003929s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.002044s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1329235145_  AND `hook` IN (:ThinkBind_2_1595416262_,:ThinkBind_3_94414612_,:ThinkBind_4_603013082_,:ThinkBind_5_259129001_,:ThinkBind_6_1989310236_,:ThinkBind_7_627117104_,:ThinkBind_8_197313491_,:ThinkBind_9_1824054097_,:ThinkBind_10_363135618_,:ThinkBind_11_1664566815_,:ThinkBind_12_1335370012_,:ThinkBind_13_1318348536_,:ThinkBind_14_1567618954_,:ThinkBind_15_663586051_,:ThinkBind_16_1077525596_,:ThinkBind_17_1192319532_,:ThinkBind_18_386174120_,:ThinkBind_19_2145746340_,:ThinkBind_20_1564412738_,:ThinkBind_21_1013931069_,:ThinkBind_22_1831965248_,:ThinkBind_23_1632781012_,:ThinkBind_24_32362380_,:ThinkBind_25_922524187_,:ThinkBind_26_1702357860_,:ThinkBind_27_2119527975_,:ThinkBind_28_1567835691_,:ThinkBind_29_913465510_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:20:12+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.072712s] [吞吐率：13.75req/s] [内存消耗：759.81kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001279s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.015453s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001878s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.005193s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.002126s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1754688847_  AND `hook` IN (:ThinkBind_2_23561854_,:ThinkBind_3_139105553_,:ThinkBind_4_1172165657_,:ThinkBind_5_423028949_,:ThinkBind_6_501144362_,:ThinkBind_7_1863840932_,:ThinkBind_8_551930081_,:ThinkBind_9_965197980_,:ThinkBind_10_1461668029_,:ThinkBind_11_729557421_,:ThinkBind_12_1604716953_,:ThinkBind_13_266228932_,:ThinkBind_14_1634736039_,:ThinkBind_15_723988521_,:ThinkBind_16_2073434277_,:ThinkBind_17_671785851_,:ThinkBind_18_911411860_,:ThinkBind_19_323445947_,:ThinkBind_20_1692106438_,:ThinkBind_21_445328254_,:ThinkBind_22_1476117051_,:ThinkBind_23_1351658348_,:ThinkBind_24_177548877_,:ThinkBind_25_1785720009_,:ThinkBind_26_131005317_,:ThinkBind_27_1542932409_,:ThinkBind_28_240689028_,:ThinkBind_29_1191634584_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:20:31+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.110452s] [吞吐率：9.05req/s] [内存消耗：760.00kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003380s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.013554s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001887s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003451s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001930s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_845644888_  AND `hook` IN (:ThinkBind_2_1938403534_,:ThinkBind_3_880531222_,:ThinkBind_4_1234339099_,:ThinkBind_5_1765516556_,:ThinkBind_6_309420099_,:ThinkBind_7_1461251650_,:ThinkBind_8_1495123802_,:ThinkBind_9_1175549287_,:ThinkBind_10_1210479952_,:ThinkBind_11_513527173_,:ThinkBind_12_1790441302_,:ThinkBind_13_205108944_,:ThinkBind_14_1966527696_,:ThinkBind_15_437085727_,:ThinkBind_16_818874413_,:ThinkBind_17_1902244821_,:ThinkBind_18_1681544307_,:ThinkBind_19_1491493932_,:ThinkBind_20_193401049_,:ThinkBind_21_1945831793_,:ThinkBind_22_569393765_,:ThinkBind_23_1449006023_,:ThinkBind_24_172349617_,:ThinkBind_25_1831532066_,:ThinkBind_26_1824054730_,:ThinkBind_27_1656287998_,:ThinkBind_28_1449637582_,:ThinkBind_29_118831281_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:21:05+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.090742s] [吞吐率：11.02req/s] [内存消耗：761.08kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001023s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.010617s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001686s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003021s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.004994s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_305646971_  AND `hook` IN (:ThinkBind_2_1814524398_,:ThinkBind_3_774009176_,:ThinkBind_4_1433474125_,:ThinkBind_5_710831885_,:ThinkBind_6_1958053680_,:ThinkBind_7_1055574225_,:ThinkBind_8_201617678_,:ThinkBind_9_1857335994_,:ThinkBind_10_1907571089_,:ThinkBind_11_1263929156_,:ThinkBind_12_1771466556_,:ThinkBind_13_704887568_,:ThinkBind_14_1824369120_,:ThinkBind_15_2024536561_,:ThinkBind_16_996923463_,:ThinkBind_17_776814033_,:ThinkBind_18_150688377_,:ThinkBind_19_1723391682_,:ThinkBind_20_1987849331_,:ThinkBind_21_1995508003_,:ThinkBind_22_378961319_,:ThinkBind_23_617078851_,:ThinkBind_24_1999950903_,:ThinkBind_25_1424715457_,:ThinkBind_26_639825531_,:ThinkBind_27_514106535_,:ThinkBind_28_2072872026_,:ThinkBind_29_1715653502_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:21:44+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.091800s] [吞吐率：10.89req/s] [内存消耗：763.75kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004830s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.010012s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.005722s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003434s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001678s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1853251019_  AND `hook` IN (:ThinkBind_2_1996999756_,:ThinkBind_3_922828847_,:ThinkBind_4_1647765959_,:ThinkBind_5_1497897078_,:ThinkBind_6_700361837_,:ThinkBind_7_315646825_,:ThinkBind_8_1658425147_,:ThinkBind_9_801560012_,:ThinkBind_10_672404219_,:ThinkBind_11_473120368_,:ThinkBind_12_1909863132_,:ThinkBind_13_211482370_,:ThinkBind_14_1871744237_,:ThinkBind_15_432943424_,:ThinkBind_16_693292680_,:ThinkBind_17_945371986_,:ThinkBind_18_706293785_,:ThinkBind_19_463464018_,:ThinkBind_20_1813101687_,:ThinkBind_21_943451809_,:ThinkBind_22_1015501167_,:ThinkBind_23_1474839414_,:ThinkBind_24_1286350027_,:ThinkBind_25_1419791394_,:ThinkBind_26_1345582343_,:ThinkBind_27_776975118_,:ThinkBind_28_87451745_,:ThinkBind_29_821721672_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:22:47+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.105036s] [吞吐率：9.52req/s] [内存消耗：760.95kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001084s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.005227s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.005159s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.006261s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.003785s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_2139723269_  AND `hook` IN (:ThinkBind_2_413438197_,:ThinkBind_3_593812171_,:ThinkBind_4_1093235229_,:ThinkBind_5_2020801542_,:ThinkBind_6_1050001457_,:ThinkBind_7_1625835744_,:ThinkBind_8_76080774_,:ThinkBind_9_1478578524_,:ThinkBind_10_1879345480_,:ThinkBind_11_385016433_,:ThinkBind_12_1366103200_,:ThinkBind_13_603183988_,:ThinkBind_14_1124157624_,:ThinkBind_15_2021089050_,:ThinkBind_16_788218536_,:ThinkBind_17_125348881_,:ThinkBind_18_1211110701_,:ThinkBind_19_357537796_,:ThinkBind_20_1766259742_,:ThinkBind_21_1926602208_,:ThinkBind_22_1708683707_,:ThinkBind_23_716149246_,:ThinkBind_24_1499381951_,:ThinkBind_25_757453228_,:ThinkBind_26_843494108_,:ThinkBind_27_791254091_,:ThinkBind_28_513120409_,:ThinkBind_29_565178427_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:23:07+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.070537s] [吞吐率：14.18req/s] [内存消耗：760.95kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002666s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.015017s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001155s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003098s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001334s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_440009195_  AND `hook` IN (:ThinkBind_2_1913627385_,:ThinkBind_3_1578727714_,:ThinkBind_4_797135688_,:ThinkBind_5_1131546002_,:ThinkBind_6_428041616_,:ThinkBind_7_1053549810_,:ThinkBind_8_1694292349_,:ThinkBind_9_1373155050_,:ThinkBind_10_1294930968_,:ThinkBind_11_612838768_,:ThinkBind_12_616690753_,:ThinkBind_13_864881931_,:ThinkBind_14_881559327_,:ThinkBind_15_380287967_,:ThinkBind_16_2123489369_,:ThinkBind_17_404731026_,:ThinkBind_18_1941548063_,:ThinkBind_19_1023296027_,:ThinkBind_20_182731780_,:ThinkBind_21_1897334472_,:ThinkBind_22_1938361415_,:ThinkBind_23_2020304427_,:ThinkBind_24_592281729_,:ThinkBind_25_1513650997_,:ThinkBind_26_569611294_,:ThinkBind_27_322390525_,:ThinkBind_28_1588793823_,:ThinkBind_29_585872906_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:23:11+08:00] 127.0.0.1 GET qmce.cn/
+[运行时间：0.108906s] [吞吐率：9.18req/s] [内存消耗：683.23kb] [文件加载：78]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001210s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.015874s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001249s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.006028s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.004401s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1682571930_  AND `hook` IN (:ThinkBind_2_762562767_,:ThinkBind_3_656818429_,:ThinkBind_4_124124148_,:ThinkBind_5_1525408690_,:ThinkBind_6_1784744803_,:ThinkBind_7_1987152677_,:ThinkBind_8_700510228_,:ThinkBind_9_2025382486_,:ThinkBind_10_1145045650_,:ThinkBind_11_1815019955_,:ThinkBind_12_1512750781_,:ThinkBind_13_178258768_,:ThinkBind_14_571821210_,:ThinkBind_15_961142780_,:ThinkBind_16_2028782248_,:ThinkBind_17_219709591_,:ThinkBind_18_948471173_,:ThinkBind_19_364414255_,:ThinkBind_20_894072580_,:ThinkBind_21_1763332046_,:ThinkBind_22_2001822772_,:ThinkBind_23_1642745932_,:ThinkBind_24_1622760984_,:ThinkBind_25_1229681396_,:ThinkBind_26_255573081_,:ThinkBind_27_1173029138_,:ThinkBind_28_1477705502_,:ThinkBind_29_1038532622_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:23:21+08:00] 127.0.0.1 GET qmce.cn/coaching
+[运行时间：0.162528s] [吞吐率：6.15req/s] [内存消耗：692.40kb] [文件加载：82]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001176s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.011849s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.008014s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.004424s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001543s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.002574s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000793s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1913055158_  AND `hook` IN (:ThinkBind_2_685058359_,:ThinkBind_3_1228201695_,:ThinkBind_4_716661486_,:ThinkBind_5_385897958_,:ThinkBind_6_779111151_,:ThinkBind_7_580611059_,:ThinkBind_8_91209607_,:ThinkBind_9_2136853050_,:ThinkBind_10_1193170117_,:ThinkBind_11_2078894622_,:ThinkBind_12_481504152_,:ThinkBind_13_178563617_,:ThinkBind_14_678824178_,:ThinkBind_15_1414478540_,:ThinkBind_16_1939034154_,:ThinkBind_17_431693394_,:ThinkBind_18_40690312_,:ThinkBind_19_1597989373_,:ThinkBind_20_1258874217_,:ThinkBind_21_125660325_,:ThinkBind_22_1432580488_,:ThinkBind_23_1513244152_,:ThinkBind_24_1908650522_,:ThinkBind_25_1543086068_,:ThinkBind_26_261251419_,:ThinkBind_27_385355878_,:ThinkBind_28_1866678255_,:ThinkBind_29_2004582364_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:23:21+08:00] 127.0.0.1 GET qmce.cn/coaching/abd
+[运行时间：0.102277s] [吞吐率：9.78req/s] [内存消耗：683.29kb] [文件加载：78]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006219s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.013999s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001686s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003365s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.004252s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1556349059_  AND `hook` IN (:ThinkBind_2_464818121_,:ThinkBind_3_589370944_,:ThinkBind_4_1837111110_,:ThinkBind_5_1445594826_,:ThinkBind_6_20900927_,:ThinkBind_7_2011869643_,:ThinkBind_8_1901284784_,:ThinkBind_9_892651383_,:ThinkBind_10_2113642330_,:ThinkBind_11_1927417851_,:ThinkBind_12_815521733_,:ThinkBind_13_528747821_,:ThinkBind_14_1881485761_,:ThinkBind_15_854067589_,:ThinkBind_16_202716023_,:ThinkBind_17_126220802_,:ThinkBind_18_1529876740_,:ThinkBind_19_1813509828_,:ThinkBind_20_108998951_,:ThinkBind_21_1187133134_,:ThinkBind_22_526091852_,:ThinkBind_23_1881262030_,:ThinkBind_24_189848022_,:ThinkBind_25_1025874485_,:ThinkBind_26_1656114549_,:ThinkBind_27_1282053221_,:ThinkBind_28_826028318_,:ThinkBind_29_1054219469_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:23:28+08:00] 127.0.0.1 GET qmce.cn/coaching
+[运行时间：0.067026s] [吞吐率：14.92req/s] [内存消耗：691.30kb] [文件加载：82]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001274s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.004058s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001167s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003078s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001221s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.004427s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.001040s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_740316339_  AND `hook` IN (:ThinkBind_2_941719153_,:ThinkBind_3_1036051888_,:ThinkBind_4_2138639886_,:ThinkBind_5_450086054_,:ThinkBind_6_371776951_,:ThinkBind_7_2073731393_,:ThinkBind_8_120348118_,:ThinkBind_9_942539729_,:ThinkBind_10_93362052_,:ThinkBind_11_86241248_,:ThinkBind_12_345768145_,:ThinkBind_13_779327506_,:ThinkBind_14_921689279_,:ThinkBind_15_1810403580_,:ThinkBind_16_382636615_,:ThinkBind_17_81958438_,:ThinkBind_18_1129957419_,:ThinkBind_19_1484710410_,:ThinkBind_20_448845722_,:ThinkBind_21_767751325_,:ThinkBind_22_1919599764_,:ThinkBind_23_348213440_,:ThinkBind_24_2073580672_,:ThinkBind_25_348718242_,:ThinkBind_26_595620444_,:ThinkBind_27_2113252816_,:ThinkBind_28_1286503277_,:ThinkBind_29_215768845_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:23:28+08:00] 127.0.0.1 GET qmce.cn/coaching/abd
+[运行时间：0.061672s] [吞吐率：16.21req/s] [内存消耗：683.44kb] [文件加载：78]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007781s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.003654s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001143s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.006914s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.003342s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_272218858_  AND `hook` IN (:ThinkBind_2_1280061603_,:ThinkBind_3_2050118251_,:ThinkBind_4_158089184_,:ThinkBind_5_568673648_,:ThinkBind_6_1443127191_,:ThinkBind_7_2024332336_,:ThinkBind_8_51600130_,:ThinkBind_9_2056490882_,:ThinkBind_10_348933309_,:ThinkBind_11_1679268373_,:ThinkBind_12_307436581_,:ThinkBind_13_568499035_,:ThinkBind_14_1816389987_,:ThinkBind_15_1109551658_,:ThinkBind_16_1298917225_,:ThinkBind_17_1325052070_,:ThinkBind_18_2077388970_,:ThinkBind_19_213942050_,:ThinkBind_20_1276456536_,:ThinkBind_21_1520688595_,:ThinkBind_22_1859149695_,:ThinkBind_23_963457932_,:ThinkBind_24_1714770771_,:ThinkBind_25_1149900547_,:ThinkBind_26_1483309629_,:ThinkBind_27_779269726_,:ThinkBind_28_1812197531_,:ThinkBind_29_1738419811_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:23:38+08:00] 127.0.0.1 GET qmce.cn/wx/abd
+[运行时间：0.118013s] [吞吐率：8.47req/s] [内存消耗：664.52kb] [文件加载：78]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001187s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.005194s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.002747s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.007617s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001618s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `app` = 'wx' [ RunTime:0.001097s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 10.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('') ORDER BY `list_order` ASC [ RunTime:0.000975s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_790412531_  AND `hook` IN (:ThinkBind_2_1449090129_,:ThinkBind_3_1801086704_,:ThinkBind_4_1096248747_,:ThinkBind_5_356045792_,:ThinkBind_6_1854026167_,:ThinkBind_7_310026322_,:ThinkBind_8_1211923564_,:ThinkBind_9_213206540_,:ThinkBind_10_1824128866_,:ThinkBind_11_1091658599_,:ThinkBind_12_805639730_,:ThinkBind_13_2098121982_,:ThinkBind_14_456095304_,:ThinkBind_15_1020705387_,:ThinkBind_16_35507958_,:ThinkBind_17_1070481325_,:ThinkBind_18_1072283013_,:ThinkBind_19_301171531_,:ThinkBind_20_1100415398_,:ThinkBind_21_2063003945_,:ThinkBind_22_1310782113_,:ThinkBind_23_1042616763_,:ThinkBind_24_543372119_,:ThinkBind_25_636414704_,:ThinkBind_26_839276425_,:ThinkBind_27_270861024_,:ThinkBind_28_1219954145_,:ThinkBind_29_1387910744_) ORDER BY `list_order` ASC [Using where; Using filesort]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_362211234_  AND `hook` IN ('') ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:23:40+08:00] 127.0.0.1 GET qmce.cn/wx
+[运行时间：0.137957s] [吞吐率：7.25req/s] [内存消耗：683.15kb] [文件加载：78]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003152s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.015384s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001696s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.011188s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001646s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_2061315620_  AND `hook` IN (:ThinkBind_2_192464771_,:ThinkBind_3_1817297237_,:ThinkBind_4_554491899_,:ThinkBind_5_1507872598_,:ThinkBind_6_1049203074_,:ThinkBind_7_1844749059_,:ThinkBind_8_1603067728_,:ThinkBind_9_644670811_,:ThinkBind_10_785822864_,:ThinkBind_11_621456241_,:ThinkBind_12_1183950948_,:ThinkBind_13_306772875_,:ThinkBind_14_607196653_,:ThinkBind_15_551656631_,:ThinkBind_16_1278432749_,:ThinkBind_17_2074119838_,:ThinkBind_18_538700858_,:ThinkBind_19_781751220_,:ThinkBind_20_1326516547_,:ThinkBind_21_1247202161_,:ThinkBind_22_943438525_,:ThinkBind_23_104320673_,:ThinkBind_24_358109939_,:ThinkBind_25_714168550_,:ThinkBind_26_40883154_,:ThinkBind_27_1859918938_,:ThinkBind_28_498354984_,:ThinkBind_29_2046606079_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:23:56+08:00] 127.0.0.1 GET qmce.cn/coaching
+[运行时间：0.080655s] [吞吐率：12.40req/s] [内存消耗：691.34kb] [文件加载：82]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'purpose' => 'prefetch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001079s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.035216s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001452s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003228s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001481s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.003273s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000776s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_625999527_  AND `hook` IN (:ThinkBind_2_1661099858_,:ThinkBind_3_2142982899_,:ThinkBind_4_1767296495_,:ThinkBind_5_130062997_,:ThinkBind_6_1702600403_,:ThinkBind_7_403725624_,:ThinkBind_8_790099639_,:ThinkBind_9_1250712600_,:ThinkBind_10_816370940_,:ThinkBind_11_1945355452_,:ThinkBind_12_1996700588_,:ThinkBind_13_1892699333_,:ThinkBind_14_470599008_,:ThinkBind_15_391292917_,:ThinkBind_16_497688275_,:ThinkBind_17_1693349691_,:ThinkBind_18_1562941029_,:ThinkBind_19_368668725_,:ThinkBind_20_273498699_,:ThinkBind_21_13559899_,:ThinkBind_22_1844065030_,:ThinkBind_23_1708178531_,:ThinkBind_24_1548428221_,:ThinkBind_25_1339854956_,:ThinkBind_26_1951458289_,:ThinkBind_27_1458240809_,:ThinkBind_28_259632106_,:ThinkBind_29_373319613_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:23:56+08:00] 127.0.0.1 GET qmce.cn/coaching/abd
+[运行时间：0.091489s] [吞吐率：10.93req/s] [内存消耗：683.45kb] [文件加载：78]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'purpose' => 'prefetch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001103s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.044594s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001313s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003805s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001306s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_550860817_  AND `hook` IN (:ThinkBind_2_256857795_,:ThinkBind_3_416259112_,:ThinkBind_4_321156930_,:ThinkBind_5_1564781086_,:ThinkBind_6_1810606629_,:ThinkBind_7_1245177227_,:ThinkBind_8_560073337_,:ThinkBind_9_1567554684_,:ThinkBind_10_1729565678_,:ThinkBind_11_1510942227_,:ThinkBind_12_727879938_,:ThinkBind_13_1239499369_,:ThinkBind_14_1220980494_,:ThinkBind_15_1775914580_,:ThinkBind_16_1314962308_,:ThinkBind_17_1601202891_,:ThinkBind_18_2091187774_,:ThinkBind_19_699674514_,:ThinkBind_20_1962235517_,:ThinkBind_21_1647279462_,:ThinkBind_22_172016203_,:ThinkBind_23_1405201026_,:ThinkBind_24_504174100_,:ThinkBind_25_1040744051_,:ThinkBind_26_1457821479_,:ThinkBind_27_956178361_,:ThinkBind_28_804387368_,:ThinkBind_29_1791821487_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:24:07+08:00] 127.0.0.1 GET qmce.cn/coaching/abd
+[运行时间：0.113681s] [吞吐率：8.80req/s] [内存消耗：683.55kb] [文件加载：78]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001428s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.004602s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.004250s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.004917s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.002147s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1805065492_  AND `hook` IN (:ThinkBind_2_615800483_,:ThinkBind_3_913285714_,:ThinkBind_4_472394962_,:ThinkBind_5_552765186_,:ThinkBind_6_1555836052_,:ThinkBind_7_2084503246_,:ThinkBind_8_1831519802_,:ThinkBind_9_390678259_,:ThinkBind_10_1916817231_,:ThinkBind_11_690647796_,:ThinkBind_12_1771521075_,:ThinkBind_13_1032591712_,:ThinkBind_14_1067345881_,:ThinkBind_15_1193360461_,:ThinkBind_16_1667510061_,:ThinkBind_17_1151717571_,:ThinkBind_18_172420664_,:ThinkBind_19_783467596_,:ThinkBind_20_991355217_,:ThinkBind_21_251809568_,:ThinkBind_22_715685321_,:ThinkBind_23_927456462_,:ThinkBind_24_1521242603_,:ThinkBind_25_1107327683_,:ThinkBind_26_1739508709_,:ThinkBind_27_190091728_,:ThinkBind_28_964870542_,:ThinkBind_29_441093983_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:24:10+08:00] 127.0.0.1 GET qmce.cn/coaching
+[运行时间：0.118470s] [吞吐率：8.44req/s] [内存消耗：692.38kb] [文件加载：82]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.017020s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.004167s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.003968s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003561s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001371s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.003700s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000890s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1715249013_  AND `hook` IN (:ThinkBind_2_725116262_,:ThinkBind_3_145408402_,:ThinkBind_4_1121855954_,:ThinkBind_5_1659431471_,:ThinkBind_6_969167562_,:ThinkBind_7_1607535561_,:ThinkBind_8_993749366_,:ThinkBind_9_541104381_,:ThinkBind_10_482092620_,:ThinkBind_11_1046354661_,:ThinkBind_12_1212532583_,:ThinkBind_13_1415582145_,:ThinkBind_14_232103784_,:ThinkBind_15_1073947587_,:ThinkBind_16_393605789_,:ThinkBind_17_1171747450_,:ThinkBind_18_424725881_,:ThinkBind_19_1969086545_,:ThinkBind_20_842904142_,:ThinkBind_21_1106850662_,:ThinkBind_22_864002122_,:ThinkBind_23_741394995_,:ThinkBind_24_45101330_,:ThinkBind_25_1815192047_,:ThinkBind_26_1041073662_,:ThinkBind_27_151735465_,:ThinkBind_28_1382056774_,:ThinkBind_29_1285503842_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:24:10+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.052658s] [吞吐率：18.99req/s] [内存消耗：759.40kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001181s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.004963s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001159s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.006940s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001647s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1002363468_  AND `hook` IN (:ThinkBind_2_430157767_,:ThinkBind_3_1477420690_,:ThinkBind_4_1430745680_,:ThinkBind_5_674937201_,:ThinkBind_6_1929166057_,:ThinkBind_7_1241362461_,:ThinkBind_8_212403565_,:ThinkBind_9_1684647793_,:ThinkBind_10_579208294_,:ThinkBind_11_98800201_,:ThinkBind_12_1486397483_,:ThinkBind_13_698686486_,:ThinkBind_14_1078546979_,:ThinkBind_15_119001751_,:ThinkBind_16_470310348_,:ThinkBind_17_223934910_,:ThinkBind_18_12255029_,:ThinkBind_19_313147758_,:ThinkBind_20_630337963_,:ThinkBind_21_1508686044_,:ThinkBind_22_1452018200_,:ThinkBind_23_468818044_,:ThinkBind_24_668535021_,:ThinkBind_25_126268919_,:ThinkBind_26_1135353197_,:ThinkBind_27_1419330063_,:ThinkBind_28_1024222926_,:ThinkBind_29_1921449915_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:24:48+08:00] 127.0.0.1 GET qmce.cn/coaching
+[运行时间：0.142893s] [吞吐率：7.00req/s] [内存消耗：743.59kb] [文件加载：87]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004602s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.026454s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001418s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.015330s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.004537s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.004096s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000852s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_377529637_  AND `hook` IN (:ThinkBind_2_162890374_,:ThinkBind_3_1584009141_,:ThinkBind_4_713580942_,:ThinkBind_5_824670383_,:ThinkBind_6_945773406_,:ThinkBind_7_1587419816_,:ThinkBind_8_747085375_,:ThinkBind_9_255023744_,:ThinkBind_10_1222891871_,:ThinkBind_11_1076107397_,:ThinkBind_12_1317415522_,:ThinkBind_13_1166355574_,:ThinkBind_14_1683413462_,:ThinkBind_15_1652836012_,:ThinkBind_16_2099707238_,:ThinkBind_17_453549472_,:ThinkBind_18_1389392085_,:ThinkBind_19_838937231_,:ThinkBind_20_1022989240_,:ThinkBind_21_2038485039_,:ThinkBind_22_1033178237_,:ThinkBind_23_1587950335_,:ThinkBind_24_153226345_,:ThinkBind_25_2073050312_,:ThinkBind_26_2055168166_,:ThinkBind_27_690545321_,:ThinkBind_28_446957922_,:ThinkBind_29_270126989_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:25:32+08:00] 127.0.0.1 GET qmce.cn/coaching
+[运行时间：0.091364s] [吞吐率：10.95req/s] [内存消耗：744.76kb] [文件加载：87]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001139s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.005848s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001413s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.005077s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.002248s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.002939s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.001891s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_399266686_  AND `hook` IN (:ThinkBind_2_1933251251_,:ThinkBind_3_829211478_,:ThinkBind_4_1412583840_,:ThinkBind_5_644367099_,:ThinkBind_6_1256711013_,:ThinkBind_7_1569498078_,:ThinkBind_8_287868373_,:ThinkBind_9_1823564617_,:ThinkBind_10_15530900_,:ThinkBind_11_369944962_,:ThinkBind_12_2090860844_,:ThinkBind_13_1524841537_,:ThinkBind_14_989995464_,:ThinkBind_15_1042446603_,:ThinkBind_16_1465834100_,:ThinkBind_17_1838311086_,:ThinkBind_18_770184572_,:ThinkBind_19_2030337335_,:ThinkBind_20_1967834090_,:ThinkBind_21_363758504_,:ThinkBind_22_1958450347_,:ThinkBind_23_1790797062_,:ThinkBind_24_221781937_,:ThinkBind_25_94715465_,:ThinkBind_26_1375180585_,:ThinkBind_27_666788291_,:ThinkBind_28_1138836352_,:ThinkBind_29_483909698_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:26:17+08:00] 127.0.0.1 GET qmce.cn/coaching
+[运行时间：0.098121s] [吞吐率：10.19req/s] [内存消耗：692.67kb] [文件加载：82]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001871s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.005489s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.002033s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003395s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001358s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.004097s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.001732s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1349482964_  AND `hook` IN (:ThinkBind_2_1727892411_,:ThinkBind_3_2089743212_,:ThinkBind_4_854663600_,:ThinkBind_5_1901376589_,:ThinkBind_6_1033907768_,:ThinkBind_7_447733927_,:ThinkBind_8_2021478056_,:ThinkBind_9_972162188_,:ThinkBind_10_831113967_,:ThinkBind_11_257164583_,:ThinkBind_12_654324935_,:ThinkBind_13_920229226_,:ThinkBind_14_964866575_,:ThinkBind_15_2033084350_,:ThinkBind_16_957517463_,:ThinkBind_17_221920806_,:ThinkBind_18_1485879312_,:ThinkBind_19_2142246916_,:ThinkBind_20_1968891201_,:ThinkBind_21_1304094832_,:ThinkBind_22_452652131_,:ThinkBind_23_970919743_,:ThinkBind_24_2102243644_,:ThinkBind_25_768902227_,:ThinkBind_26_2006674714_,:ThinkBind_27_1931741610_,:ThinkBind_28_1712769999_,:ThinkBind_29_879672651_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:26:17+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.085007s] [吞吐率：11.76req/s] [内存消耗：736.55kb] [文件加载：85]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001494s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.003750s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.002289s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003175s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001353s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.008061s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.001471s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1334045246_  AND `hook` IN (:ThinkBind_2_731325512_,:ThinkBind_3_201398192_,:ThinkBind_4_331391086_,:ThinkBind_5_1758377168_,:ThinkBind_6_401171136_,:ThinkBind_7_1117139258_,:ThinkBind_8_683545651_,:ThinkBind_9_1396138312_,:ThinkBind_10_656093389_,:ThinkBind_11_1339590118_,:ThinkBind_12_967542799_,:ThinkBind_13_1266868841_,:ThinkBind_14_87250123_,:ThinkBind_15_1598150621_,:ThinkBind_16_2044122976_,:ThinkBind_17_658644691_,:ThinkBind_18_1671713317_,:ThinkBind_19_1051852412_,:ThinkBind_20_25383968_,:ThinkBind_21_1558035545_,:ThinkBind_22_976217680_,:ThinkBind_23_685088943_,:ThinkBind_24_900124329_,:ThinkBind_25_1878355930_,:ThinkBind_26_936503073_,:ThinkBind_27_267130373_,:ThinkBind_28_921056977_,:ThinkBind_29_1853553211_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T11:26:23+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.055508s] [吞吐率：18.02req/s] [内存消耗：693.27kb] [文件加载：82]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001123s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.003548s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001238s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.004319s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001470s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.004078s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000677s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1895702345_  AND `hook` IN (:ThinkBind_2_498303348_,:ThinkBind_3_1014762133_,:ThinkBind_4_2007548006_,:ThinkBind_5_842335582_,:ThinkBind_6_580145452_,:ThinkBind_7_754921247_,:ThinkBind_8_1799655687_,:ThinkBind_9_1149477794_,:ThinkBind_10_423189085_,:ThinkBind_11_149415702_,:ThinkBind_12_460689302_,:ThinkBind_13_1293312092_,:ThinkBind_14_636558679_,:ThinkBind_15_1229510787_,:ThinkBind_16_260699016_,:ThinkBind_17_14955878_,:ThinkBind_18_1538486594_,:ThinkBind_19_1387204572_,:ThinkBind_20_585024179_,:ThinkBind_21_183965117_,:ThinkBind_22_568933120_,:ThinkBind_23_182479258_,:ThinkBind_24_257720980_,:ThinkBind_25_737519965_,:ThinkBind_26_845625827_,:ThinkBind_27_1138395373_,:ThinkBind_28_1841957315_,:ThinkBind_29_942853690_) ORDER BY `list_order` ASC [Using where; Using filesort]
+---------------------------------------------------------------
+
+[2021-05-06T14:12:55+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.161074s] [吞吐率：6.21req/s] [内存消耗：749.05kb] [文件加载：90]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005761s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.012774s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001715s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.007005s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.002559s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.010209s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.001036s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1463252498_  AND `hook` IN (:ThinkBind_2_1076146617_,:ThinkBind_3_456344466_,:ThinkBind_4_1768425416_,:ThinkBind_5_1886009858_,:ThinkBind_6_2096997048_,:ThinkBind_7_458405157_,:ThinkBind_8_1007340306_,:ThinkBind_9_735781224_,:ThinkBind_10_348787064_,:ThinkBind_11_1388222233_,:ThinkBind_12_1479133060_,:ThinkBind_13_2015608175_,:ThinkBind_14_166417941_,:ThinkBind_15_1019170901_,:ThinkBind_16_1698030752_,:ThinkBind_17_53240565_,:ThinkBind_18_1948156604_,:ThinkBind_19_634837068_,:ThinkBind_20_624358896_,:ThinkBind_21_1930018563_,:ThinkBind_22_173838806_,:ThinkBind_23_1574850286_,:ThinkBind_24_618545509_,:ThinkBind_25_1185173414_,:ThinkBind_26_2030438519_,:ThinkBind_27_93212236_,:ThinkBind_28_892517290_,:ThinkBind_29_412218013_) ORDER BY `list_order` ASC [Using where; Using filesort]
+[ error ] [8]Undefined property: app\coaching\controller\MrController::$visit_model[/Users/liunan/htdocs/qmce/app/coaching/controller/MrController.php:29]
+---------------------------------------------------------------
+
+[2021-05-06T15:04:03+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.174944s] [吞吐率：5.72req/s] [内存消耗：747.76kb] [文件加载：90]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001252s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.003963s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.003933s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.003258s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001512s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.003356s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000868s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_1505106656_  AND `hook` IN (:ThinkBind_2_976818470_,:ThinkBind_3_112885432_,:ThinkBind_4_272566050_,:ThinkBind_5_2010795572_,:ThinkBind_6_1464269018_,:ThinkBind_7_381046732_,:ThinkBind_8_789550881_,:ThinkBind_9_1174074937_,:ThinkBind_10_227615053_,:ThinkBind_11_764151808_,:ThinkBind_12_441828551_,:ThinkBind_13_876938873_,:ThinkBind_14_1635648349_,:ThinkBind_15_2137842112_,:ThinkBind_16_943974327_,:ThinkBind_17_1816579160_,:ThinkBind_18_918133205_,:ThinkBind_19_1289729775_,:ThinkBind_20_1934840474_,:ThinkBind_21_756053762_,:ThinkBind_22_1995635595_,:ThinkBind_23_1112025421_,:ThinkBind_24_1502184064_,:ThinkBind_25_709937692_,:ThinkBind_26_1553398983_,:ThinkBind_27_1329526417_,:ThinkBind_28_1201341702_,:ThinkBind_29_74377389_) ORDER BY `list_order` ASC [Using where; Using filesort]
+[ error ] [8]Undefined property: app\coaching\controller\MrController::$visit_model[/Users/liunan/htdocs/qmce/app/coaching/controller/MrController.php:29]
+---------------------------------------------------------------
+
+[2021-05-06T15:06:03+08:00] 127.0.0.1 GET qmce.cn/coaching/mr
+[运行时间：0.172706s] [吞吐率：5.79req/s] [内存消耗：747.90kb] [文件加载：90]
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkphp/lang/zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; mce_initial=bd48lPR8Z%2BKoUoKiY%2Bg4axFUsKcOvqV9kKTR1CyjK64',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'qmce.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf/src/behavior/../lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /Users/liunan/htdocs/qmce/vendor/thinkcmf/cmf-app/src/user/lang/zh-cn.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006417s ] mysql:host=localhost;port=3306;dbname=mce;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook` [ RunTime:0.005414s ]
+[ sql ] [ SQL ] SELECT `hook` FROM `mce_hook` WHERE  `type` = 1 OR (  `type` = 3  AND ( `app` = '' or `app` = 'cmf' ) ) [ RunTime:0.001783s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 56,
+  'filtered' => 11.710000038146973,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_hook_plugin` [ RunTime:0.005159s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = 1  AND `hook` IN ('app_begin','module_init','action_begin','view_filter','app_end','log_write','response_end','admin_init','home_init','send_mobile_verification_code','body_start','before_head_end','footer_start','before_footer','before_footer_end','before_body_end','left_sidebar_start','before_left_sidebar_end','right_sidebar_start','before_right_sidebar_end','comment','guestbook','switch_theme','after_content','before_content','log_write_done','switch_admin_theme','captcha_image') ORDER BY `list_order` ASC [ RunTime:0.001956s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'mce_hook_plugin',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `mce_option` [ RunTime:0.004761s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `mce_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.001442s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT `hook`,`plugin` FROM `mce_hook_plugin` WHERE  `status` = :ThinkBind_1_2107574657_  AND `hook` IN (:ThinkBind_2_1921036133_,:ThinkBind_3_502734624_,:ThinkBind_4_1742948037_,:ThinkBind_5_770066697_,:ThinkBind_6_1196864436_,:ThinkBind_7_524159582_,:ThinkBind_8_1417130705_,:ThinkBind_9_2000581406_,:ThinkBind_10_274156565_,:ThinkBind_11_1489315041_,:ThinkBind_12_309840808_,:ThinkBind_13_2098353579_,:ThinkBind_14_59293207_,:ThinkBind_15_1044409426_,:ThinkBind_16_1437242742_,:ThinkBind_17_1900225656_,:ThinkBind_18_1978046570_,:ThinkBind_19_1350218491_,:ThinkBind_20_1519478583_,:ThinkBind_21_581231986_,:ThinkBind_22_1510565667_,:ThinkBind_23_1932988533_,:ThinkBind_24_1954873911_,:ThinkBind_25_2063074061_,:ThinkBind_26_1487597166_,:ThinkBind_27_227453508_,:ThinkBind_28_1880666631_,:ThinkBind_29_85471351_) ORDER BY `list_order` ASC [Using where; Using filesort]
+[ error ] [8]Undefined property: app\coaching\controller\MrController::$visit_model[/Users/liunan/htdocs/qmce/app/coaching/controller/MrController.php:29]

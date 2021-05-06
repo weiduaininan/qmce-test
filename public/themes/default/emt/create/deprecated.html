@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="showSetView" v-if="isEmeeting">
+			<div class="showSetView_row">
+				<div class="line"></div>
+				<div class="row_detail">
+					是否 <span class="greenTitle font-14">多天云峰会</span>
+				</div>
+				<div class="showQRActive">
+					<van-switch v-model="isDays" active-color="#2A918B" inactive-color="#dcdee0" @change="daysSwitch" />
+				</div>
+			</div>
+			<div class="binding_view">
+				<div class="binding_view_content">
+					<div class="binding_view_content_row margin-top-bottom-10">
+						（如果本会议需要开展多天，例如30有约等云峰会，请选择：是）
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 多天会议提醒弹出 -->
+		<van-popup v-model="showDays" round :style="{ height: '60%'}" duration="0.1">
+			<div class="downloadView">
+				<div class="download_title">
+					<img src="../../img/icon_tishi@2x.png" class="download_tishi" />
+					<div class="download_title_des">
+						提示信息
+					</div>
+				</div>
+				<div class="download_centent_des">
+					<div class="download_row5">
+						多天云峰会<span style="color: #E54D42;">需要详细配置每一天</span>的具体讲者信息。</br></br>
+						如果<span style="color: #E54D42;">配置有误会导致签到表及会后数据产生偏差。</span></br></br>
+						为避免给您的会议有效性带来误判，请务必在下面的步骤中认真填写。</br>
+					</div>
+				</div>
+		
+				<div class="buttonView">
+					<van-button round type="info" style="min-width: 180px;" @click="daysTrueClick">确认,并下一步</van-button>
+				</div>
+		
+			</div>
+		</van-popup>
+		
+		<!-- 多天会议详情配置 -->
+		<div class="showSetView" v-if="isEmeeting">
+			<div class="showSetView_row">
+				<div class="line"></div>
+				<div class="row_detail" v-if="isDays">
+					多天会议详情配置
+				</div>
+				<div class="row_detail" v-else>
+					主席、讲者配置
+				</div>
+			</div>
+			<div class="configuration_view" v-for="(item, index) in daysData" :key="index">
+				<div class="configuration_title" v-if="daysData.length > 1 && isDays">
+					<span class="span_num">第{{index + 1}}天</span>
+					主席 / 讲者
+					 <span style="margin-left: 20px;">{{item.addStartDays}} - 17:00</span>
+				</div>
+				<div class="configuration_view_row" v-for="(row, idx) in item.user" :key="idx">
+					<div class="configuration_line"></div>
+					<div class="configuration_zhuxi" v-if="row.role == '主席'">主席</div>
+					<div class="configuration_jiangzhe" v-else >讲者</div>
+					<div class="configuration_detail">李医生 / 北京协和医院</div>
+					<img src="../../img/icon_del@2x.png" class="configuration_delete" />
+				</div>
+			</div>
+			<div class="binding_view">
+				<div class="binding_view_content">
+					<div class="addBtn" @click="addBtnClick">
+						<img src="../../img/icon_add@2x.png" class="addBtn_icon" />
+						<div class="addBtn_title">
+							添加信息
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 多天会议详情配置 -->
+		<van-popup v-model="showDaysEdit" round position="bottom" :style="{ height: '80%' }" >
+			<div class="qr_title">
+				多天会议详情配置
+			</div>
+			<div style="margin-top: 50px;">
+				<div class="addView" v-for="(item, index) in daysData" :key="index" style="border-bottom: 2px solid #EEEEEE;">
+					<div class="addDay">
+						<div class="add_title">选择时间</div>
+						<div class="add_title_row">
+							<div class="interva_bg_view">
+								<div class="qrIntervalView" @click="addStartDaysClick">
+									<van-field v-model="item.addStartDays" style="padding: 5px;margin-top: 5px;color: #888888;border: 0px solid;"
+									 readonly> </van-field>
+									<img src="../../img/icon_right@2x.png" class="interva_icon" />
+								</div>
+								<div class="qrInterval_zhi">至</div>
+								<div class="qrIntervalView" @click="addEndDaysClick">
+									<van-field v-model="item.addEndDays" style="padding: 5px;margin-top: 5px;color: #888888;" readonly>
+									</van-field>
+									<img src="../../img/icon_right@2x.png" class="interva_icon" />
+								</div>
+							</div>
+							<van-popup v-model="showAddStartDays"  round position="bottom" :style="{ height: '46%' }" duration="0.1">
+								<div class="qr_title">
+									请选择会议的开始时间
+								</div>
+								<div class="otherView">
+								
+									<van-datetime-picker v-model="currentDate" type="datetime" title="选择结束时间" :min-date="endMinDate" :max-date="endMaxDate"
+									 @confirm="onEndConfirm" @cancel="onEndCancel" @change="onEndChange" :formatter="formatter" />
+								</div>
+							</van-popup>
+							<van-popup v-model="showAddEndDays"  round position="bottom" :style="{ height: '46%' }" duration="0.1">
+								<div class="qr_title">
+									请选择会议的结束时间
+								</div>
+								<div class="otherView">
+									
+									<van-datetime-picker v-model="currentDate" type="datetime" title="选择结束时间" :min-date="endMinDate" :max-date="endMaxDate"
+									 @confirm="onEndConfirm" @cancel="onEndCancel" @change="onEndChange" :formatter="formatter" />
+								</div>
+							</van-popup>
+						</div>
+				
+				
+						<div class="choseUser_title">选择身份</div>
+						<div class="choseUser_title_row">
+							<div class="speaker" @click="choseUserClick(true)" :style="isSpeaker == true ? 'background-color: #2A918B;color: #FFFFFF;' : 'color: #888888;background-color: #FFFFFF;border: 1px solid #888888;'">讲者</div>
+							<div class="chairman" @click="choseUserClick(false)" :style="isSpeaker == true ? 'color: #888888;background-color: #FFFFFF;border: 1px solid #888888;'  : 'background-color: #2A918B;color: #FFFFFF;'">主席</div>
+							
+						</div>
+						<div class="day_num">第{{index + 1}}天</div>
+						
+						<div class="deleteDay" v-if="index != 0" @click="deleteDay(index)">
+							<img src="../../img/icon_del@2x.png" class="deleteDay_icon" />
+						</div>
+					</div>
+					<div class="addDetail" v-if="daysData.length > 0" v-for="(row, idx) in item.user" :key="idx">
+						<div class="addDetail_row" >
+							<div class="addDetail_item">
+								<div class="addDetail_item_title">姓名</div>
+								<div class="addDetail_item_input">
+									<van-field v-model="row.name" placeholder="请输入姓名" style="padding: 5px;" />
+								</div>
+							</div>
+							<div class="addDetail_item">
+								<div class="addDetail_item_title">科室</div>
+								<div class="addDetail_item_input">
+									
+									<van-field v-model="row.department" placeholder="请输入科室名称" style="padding: 5px;"> </van-field>
+									
+								</div>
+							</div>
+						</div>
+						<div class="addDetail_row" >
+							<div class="addDetail_item">
+								<div class="addDetail_item_title">医院</div>
+								<div class="addDetail_item_input">
+								
+									<van-field v-model="row.hospital" placeholder="请输入医院名称" style="padding: 5px;" />
+								</div>
+							</div>
+							<div class="addDetail_item">
+								<div class="addDetail_item_title">职称</div>
+								<div class="addDetail_item_input">
+									
+									<van-field v-model="row.title" placeholder="请输入职称" style="padding: 5px;" />
+								</div>
+							</div>
+						</div>
+						<div class="addDetail_row" style="margin-bottom: 20px;">
+							<div class="addDetail_item">
+								<div class="addDetail_item_title">编号</div>
+								<div class="addDetail_item_input">
+									<van-field v-model="row.oce" placeholder="请输入OCE医生编码" style="padding: 5px;" />
+								</div>
+							</div>
+							
+							<div class="deleteDoctor" v-if="idx != 0" @click="deleteDoctorClick(index,idx)"></div>
+							<div class="addDoctor" @click="addDoctorClick(index)">
+								<img src="../../img/icon_add@2x.png" class="addDoctor_icon" />
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+			
+			<div class="binding_view" style="margin-top: 20px;">
+				<div class="binding_view_content" style="border-top: 0px solid;">
+					<div class="addBtn" @click="addMoreClick">
+						<img src="../../img/icon_add@2x.png" class="addBtn_icon" />
+						<div class="addBtn_title">
+							继续添加
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="buttonView">
+				<van-button type="info" style="width: 100%;" @click="closeSignUp">确认</van-button>
+			</div>
+		</van-popup>
+		
+		<!-- 添加讲者主席弹出 -->
+		<van-popup v-model="showAdd" round  position="bottom" :style="{ height: '60%' }" duration="0.1">
+			<div class="qr_title">
+				添加讲者 / 主席
+			</div>
+			<div style="margin-top: 50px;">
+				<div class="addView">
+					<div class="choseUser">
+						<div class="choseUser_title">选择身份</div>
+						<div class="choseUser_title_row">
+							<div class="speaker" @click="choseUserClick(true)" :style="isSpeaker == true ? 'background-color: #2A918B;color: #FFFFFF;' : 'color: #888888;background-color: #FFFFFF;border: 1px solid #888888;'">讲者</div>
+							<div class="chairman" @click="choseUserClick(false)" :style="isSpeaker == true ? 'color: #888888;background-color: #FFFFFF;border: 1px solid #888888;'  : 'background-color: #2A918B;color: #FFFFFF;'">主席</div>
+						</div>
+					</div>
+					<div class="addDetail">
+						<div class="addDetail_row">
+							<div class="addDetail_item">
+								<div class="addDetail_item_title">姓名</div>
+								<div class="addDetail_item_input">
+									<van-field v-model="value_name" placeholder="请输入姓名" style="padding: 5px;" />
+								</div>
+							</div>
+							<div class="addDetail_item">
+								<div class="addDetail_item_title">科室</div>
+								<div class="addDetail_item_input">
+									<van-field v-model="value_department" placeholder="请输入科室名称" style="padding: 5px;"> </van-field>
+									
+								</div>
+							</div>
+						</div>
+						<div class="addDetail_row">
+							<div class="addDetail_item">
+								<div class="addDetail_item_title">医院</div>
+								<div class="addDetail_item_input">
+									<van-field v-model="value_hospital" placeholder="请输入医院名称" style="padding: 5px;" />
+								</div>
+							</div>
+							<div class="addDetail_item">
+								<div class="addDetail_item_title">职称</div>
+								<div class="addDetail_item_input">
+									<van-field v-model="value_title" placeholder="请输入职称" style="padding: 5px;" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="buttonView">
+						<van-button round type="info" style="min-width: 180px;">确认</van-button>
+					</div>
+				
+				</div>
+			</div>
+			
+		</van-popup>
+		
+		<div class="showSetView">
+			<div class="showSetView_row">
+				<div class="line"></div>
+				<div class="row_detail" style="width: 100%;">
+					二维码有效期<span class="qrInterval">(参会人扫码参会二维码有效区间)</span>
+				</div>
+			</div>
+			<div class="binding_view">
+				<div class="binding_view_content dis_center">
+					<div class="interva_bg_view">
+						<div class="qrIntervalView" @click="qrIntervaStartClick">
+							<van-field v-model="qrIntervaStart" style="padding: 5px;margin-top: 5px;color: #888888;border: 0px solid;"
+							 readonly> </van-field>
+							<img src="../../img/icon_right@2x.png" class="interva_icon" />
+						</div>
+						<div class="qrInterval_zhi">至</div>
+						<div class="qrIntervalView" @click="qrIntervaEndClick">
+							<van-field v-model="qrIntervaEnd" style="padding: 5px;margin-top: 5px;color: #888888;" readonly> </van-field>
+							<img src="../../img/icon_right@2x.png" class="interva_icon" />
+						</div>
+					</div>
+					<van-popup v-model="showQrIntervaStart"  round position="bottom" :style="{ height: '60%' }" duration="0.1">
+						<div class="qr_title">
+							请选择二维码有效期开始时间
+						</div>
+						<div class="otherView">
+							<div class="otherRow" @click="intervaSelectClick(index)" v-for="(item, index) in intervaStartData" :key="index">
+								<div :class="intervaStartIndex == index ? 'otherTitle_selected' :'otherTitle' ">
+									{{item}}
+								</div>
+							</div>
+						</div>
+					</van-popup>
+					<van-popup v-model="showQrIntervaEnd" round position="bottom" :style="{ height: '60%' }" duration="0.1">
+						<div class="qr_title">
+							请选择二维码有效期结束时间
+						</div>
+						<div class="otherView">
+							<div class="otherRow" @click="intervaEndSelectClick(index)" v-for="(item, index) in intervaEndData" :key="index">
+								<div :class="intervaEndIndex == index ? 'otherTitle_selected' :'otherTitle' ">
+									{{item}}
+								</div>
+							</div>
+						</div>
+					</van-popup>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="showSetView">
+			<div class="showSetView_row">
+				<div class="line"></div>
+				<div class="row_detail">
+					非NN人数
+				</div>
+			</div>
+			<div class="binding_view">
+				<div class="binding_view_content dis_center">
+					<van-field v-model="noNnNum" placeholder="请输入活动计划的非NN人数"></van-field>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 微上墙 -->
+		<div class="activeView_row" style="margin-top: 10px;">
+			<div class="line"></div>
+			<div class="row_detail">
+				是否开启
+				<span class="greenTitle">微上墙</span>
+			</div>
+			<van-switch v-model="isScreen" active-color="#2A918B" inactive-color="#dcdee0" @change="screenSwitch" />
+		</div>
+		
+		<!-- 会议简介 -->
+		<div class="showSetView">
+			<div class="showSetView_row">
+				<div class="line"></div>
+				<div class="row_detail">
+					会议简介
+				</div>
+				<van-switch v-model="isIntroduction" active-color="#2A918B" inactive-color="#dcdee0" @change="introductionSwitch" />
+			</div>
+			<div class="binding_view" v-if="isIntroduction">
+				<div class="binding_view_content dis_center" style="height: 150px;">
+					<van-uploader :after-read="afterRead" v-model="fileList" multiple style="background-image: url();">
+		
+					</van-uploader>
+					<div class="uploader_title" style="margin-top: 10px;">请上传会议简介图片</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!-- 学术邀请函弹出 -->
+		<van-popup v-model="showAcademic" round :style="{height: '80%'}" style="width: 90%;border-radius: 0px;" duration="0.1">
+			<div class="bg_qr_view">
+				<div class="bg_white">
+					<van-button type="info" style="margin: 10px;min-width: 140px;margin-top: 30px;border-radius: 20px;min-height: 30px;">30有约 · 区域云峰会</van-button>
+					<div class="description">请长按保存二维码</div>
+					<div class="qrbg">
+						<img src="../../img/qrcode@2x.png" class="qr" >
+					</div>
+				</div>
+			</div>
+			<img src="../../img/icon_close@2x.png" class="closeImg" @click="closeAcademicClick" />
+		</van-popup>
+		
+		<!-- 3、直播物料 -->
+		<div v-if="active == 3" class="activeView">
+			<!-- 讲者入口 -->
+			<div class="showSetView">
+				<div class="showSetView_row">
+					<div class="line"></div>
+					<div class="row_detail">
+						讲者入口
+					</div>
+				</div>
+				<div class="binding_view">
+					<div class="binding_view_row">
+						<img src="../../img/icon_share_lg@2x.png" class="item_img" />
+						<div class="item_title">操作手册</div>
+						<div class="item_btn">预览</div>
+					</div>
+				</div>
+		
+				<div class="binding_view" @click="showZhiBoClick">
+					<div class="binding_view_row" style="border-top: 0px solid;">
+						<img src="../../img/icon_qr_zhibo@2x.png" class="item_img" />
+						<div class="item_title">直播二维码</div>
+						<div class="item_btn">预览</div>
+					</div>
+				</div>
+			</div>
+		
+			<!-- 听众入口 -->
+			<div class="showSetView">
+				<div class="showSetView_row">
+					<div class="line"></div>
+					<div class="row_detail">
+						听众入口
+					</div>
+				</div>
+				<div class="binding_view" @click="showMeetingClick">
+					<div class="binding_view_row">
+						<img src="../../img/icon_qr_zhibo@2x.png" class="item_img" />
+						<div class="item_colum_title">
+							<div class="item_title">会议二维码</div>
+							<div class="item_title_detail">听众使用微信扫描此二维码接收会议推送并报名</div>
+						</div>
+		
+						<div class="item_btn">预览</div>
+					</div>
+				</div>
+			</div>
+		
+			<!-- 学术邀请函 -->
+			<div class="showSetView">
+				<div class="showSetView_row">
+					<div class="line"></div>
+					<div class="row_detail">
+						学术邀请函
+					</div>
+				</div>
+				<div class="binding_view" @click="showAcademicClick">
+					<div class="binding_view_row">
+						<img src="../../img/icon_qr_zhibo@2x.png" class="item_img" />
+						<div class="item_title">学术邀请函</div>
+						<div class="item_btn">查看</div>
+					</div>
+				</div>
+			</div>
+			<div class="nextBtn" @click="nextClick(4)">
+				<span>完成</span>
+			</div>
+		
+			<!-- 显示直播二维码弹出 -->
+			<van-popup v-model="showZhiBoQR" round position="bottom" :style="{ height: '60%' }" duration="0.1">
+				<div class="qr_title">
+					直播二维码
+				</div>
+				<div class="qr_view_img">
+					<img src="../../img/qrcode@2x.png" class="qr_img" />
+					<van-button round type="info" style="min-width: 140px;margin-top: 30px;">长按保存二维码</van-button>
+				</div>
+			</van-popup>
+			<!-- 显示会议二维码弹出 -->
+			<van-popup v-model="showMeetingQR" round position="bottom" :style="{ height: '60%' }" duration="0.1">
+				<div class="qr_title">
+					会议二维码
+				</div>
+				<div class="qr_view_img">
+					<img src="../../img/qrcode@2x.png" class="qr_img" />
+					<van-button round type="info" style="min-width: 140px;margin-top: 30px;">长按保存二维码</van-button>
+				</div>
+			</van-popup>
+		
+		</div>
+	</body>
+	
+	<script>
+		new Vue({
+			el: '.app',
+			data: {
+				activeKey: 0,
+				isEdit:false,
+				// 直播设置相关
+				isEmeeting: true,
+				isOpen: false,
+				isSignUp: true,
+				isDays: false,
+				showQR: false,
+				isBindSelf: true,
+				showSignUp: false,
+				showDays: false,
+				showDaysEdit: false,
+				showAdd: false,
+				value_name: '',
+				value_department: '',
+				value_hospital: '',
+				value_title: '',
+				isSpeaker: true,
+				daysData: [{
+					addStartDays: '2021/1/4 8:30',
+					addEndDays: '2021/1/4 17:00',
+					user: [{
+						role: '讲者',
+						name: '龙傲天',
+						hospital: '北京世纪坛医院',
+						department: '内分泌科',
+						title:'主任医师',
+						oce:'123456789'
+					},{
+						role: '主席',
+						name: '龙傲天',
+						hospital: '北京世纪坛医院',
+						department: '内分泌科',
+						title:'主任医师',
+						oce:'123456789'
+					}]
+				},{
+					addStartDays: '2021/1/5 8:30',
+					addEndDays: '2021/1/5 17:00',
+					user: [{
+						role: '讲者',
+						name: '龙傲天',
+						hospital: '北京世纪坛医院',
+						department: '内分泌科',
+						title:'主任医师',
+						oce:'123456789'
+					},{
+						role: '主席',
+						name: '龙傲天',
+						hospital: '北京世纪坛医院',
+						department: '内分泌科',
+						title:'主任医师',
+						oce:'123456789'
+					}]
+				}],
+				showAddStartDays: false,
+				showAddEndDays: false,
+				// 基本信息相关
+				fileList: [
+					// Uploader 根据文件后缀来判断是否为图片文件
+					// 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+					{
+						url: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1936271708,2299077308&fm=26&gp=0.jpg',
+						isImage: true
+					},
+				],
+				activity_theme: '诺和佳上市会',
+				showChoseCity: false,
+				fieldCityValue: '浙江 / 杭州 / 西湖区',
+				activity_address:'香格里拉酒店2层',
+				columns: [{
+						text: '浙江',
+						children: [{
+								text: '杭州',
+								children: [{
+									text: '西湖区'
+								}, {
+									text: '余杭区'
+								}],
+							},
+							{
+								text: '温州',
+								children: [{
+									text: '鹿城区'
+								}, {
+									text: '瓯海区'
+								}],
+							},
+						],
+					},
+					{
+						text: '福建',
+						children: [{
+								text: '福州',
+								children: [{
+									text: '鼓楼区'
+								}, {
+									text: '台江区'
+								}],
+							},
+							{
+								text: '厦门',
+								children: [{
+									text: '思明区'
+								}, {
+									text: '海沧区'
+								}],
+							},
+						],
+					},
+				],
+				fieldStartValue: '2020-11-27 08:00',
+				showChoseStart: false,
+				startMinDate: new Date(2020, 0, 1),
+				startMaxDate: new Date(2025, 10, 1),
+				currentDate: new Date(),
+				
+				fieldEndValue: '2020-11-27 18:00',
+				showChoseEnd: false,
+				endMinDate: new Date(2020, 0, 1),
+				endMaxDate: new Date(2025, 10, 1),
+				
+				qrIntervaStart:'会前一周',
+				showQrIntervaStart:false,
+				qrIntervaEnd:'会后30天',
+				showQrIntervaEnd:false,
+				noNnNum:'100人',
+				nnNum:'20人',
+				intervaStartIndex:0,
+				intervaEndIndex:0,
+				intervaStartData:['会前一周','会前一天','会前30天','会前6小时','会前2小时','会开始时'],
+				intervaEndData:['会后一周','会后一天','会后30天','会后6小时','会后2小时','会结束时'],
+				// 附加信息相关
+				isWXSignIn:true,
+				isScreen:false,
+				isIntroduction:true,
+				isSchedule:true,
+				
+				showMeetingQR: false,
+				showZhiBoQR: false,
+				showAcademic:false
+			},
+			methods: {
+				onClickLeft(e) {
+					window.location.href = "../meeting/index.html"
+				},
+				// 直播设置相关
+				eMeetingSwitch(e) {
+					var that = this;
+					that.doActive = 0;
+				},
+				openSwitch(e) {
+					console.log(e);
+				},
+				signUpSwitch(e) {
+					var that = this;
+					if (e == false) {
+						that.showSignUp = true;
+						that.isSignUp = true;
+					}
+				},
+				daysSwitch(e) {
+					var that = this;
+					if (e == true) {
+						that.showDays = true;
+					}
+				},
+				showQRActiveClick(e) {
+					var that = this;
+					that.showQR = true;
+				},
+				bindSelfClick(e) {
+					var that = this;
+					if (e == true) {
+						that.isBindSelf = true;
+					} else {
+						that.isBindSelf = false;
+						that.showQR = true;
+					}
+				},
+				closeSignUp() {
+					var that = this;
+					that.showSignUp = false;
+					that.isSignUp = false;
+				},
+				addBtnClick() {
+					var that = this;
+					that.showAdd = true;
+				},
+				choseUserClick(e) {
+					var that = this;
+					if (e == true) {
+						that.isSpeaker = true;
+					} else {
+						that.isSpeaker = false;
+					}
+				},
+				daysTrueClick(e) {
+					var that = this;
+					that.showDays = false;
+					that.showDaysEdit = true;
+				},
+				addStartDaysClick(e) {
+					var that = this;
+					that.showAddStartDays = true;
+				},
+				addEndDaysClick(e) {
+					var that = this;
+					that.showAddEndDays = true;
+				},
+				addMoreClick(e){
+					var that = this;
+					var time = new Date().toLocaleString().substring(0, 8);
+					
+					var data = {
+						addStartDays: time + ' 8:30',
+						addEndDays: time + ' 17:00',
+						user: [{
+							role: '',
+							name: '',
+							hospital: '',
+							department: '',
+							title:'',
+							oce:''
+						}]
+					};
+					that.daysData.push(data);
+				},
+				deleteDay(index){
+					console.log('删除多天日程，仅保留一个');
+					var that = this;
+					
+					vant.Dialog.confirm({
+					  title: '提示',
+					  message: '是否删除此日程？',
+					  confirmButtonColor:'#2A918B'
+					})
+					  .then(() => {
+					    // on confirm
+						that.daysData.splice(index,1);
+					  })
+					  .catch(() => {
+					    // on cancel
+					  });
+				},
+				deleteDoctorClick(index,idx){
+					console.log('删除医生，仅保留一个');
+					var that = this;
+					var user = that.daysData[index].user;
+					user.splice(idx,1);
+				},
+				addDoctorClick(e){
+					console.log('添加医生');
+					var that = this;
+					var data = {
+							role: '',
+							name: '',
+							hospital: '',
+							department: '',
+							title:'',
+							oce:''
+						};
+					that.daysData[e].user.push(data);
+				},
+				// 基本信息相关
+				afterRead(file) {
+					// 此时可以自行将文件上传至服务器
+					console.log(file);
+				},
+				showChoseCityClick(e) {
+					var that = this;
+					that.showChoseCity = true;
+				},
+				onCityConfirm(e) {
+					var that = this;
+					console.log(e);
+					that.fieldCityValue = e[0] + ' / ' + e[1] + ' / ' + e[2];
+					that.showChoseCity = false;
+				},
+				onCityCancel(e) {
+					var that = this;
+					that.showChoseCity = false;
+				},
+				onCityChange(e) {
+					var that = this;
+					console.log(e);
+				},
+				showChoseStartClick(e) {
+					var that = this;
+					that.showChoseStart = true;
+				},
+				onStartConfirm(e) {
+					var that = this;
+					that.showChoseStart = false;
+					that.fieldStartValue = formatTime(e);
+				},
+				onStartCancel(e) {
+					var that = this;
+					that.showChoseStart = false;
+				},
+				onStartChange(e) {
+					var that = this;
+					console.log(e);
+				},
+				formatter(type, val) {
+					if (type === 'year') {
+						return `${val}年`;
+					} else if (type === 'month') {
+						return `${val}月`;
+					} else if (type === 'day') {
+						return `${val}日`;
+					} else if (type === 'hour') {
+						return `${val}时`;
+					}else if (type === 'minute') {
+						return `${val}分`;
+					}
+					return val;
+				},
+				showChoseEndClick(e) {
+					var that = this;
+					that.showChoseEnd = true;
+				},
+				onEndConfirm(e) {
+					var that = this;
+					console.log(e);
+					that.showChoseEnd = false;
+					that.fieldEndValue = formatTime(e);
+				},
+				onEndCancel(e) {
+					var that = this;
+					that.showChoseEnd = false;
+				},
+				onEndChange(e) {
+					var that = this;
+				},
+				qrIntervaStartClick(e){
+					var that = this;
+					that.showQrIntervaStart = true;
+				},
+				qrIntervaEndClick(e){
+					var that = this;
+					that.showQrIntervaEnd = true;
+				},
+				intervaSelectClick(e){
+					console.log(e);
+					var that = this;
+					that.intervaStartIndex = e;
+				},
+				intervaEndSelectClick(e){
+					var that = this;
+					that.intervaEndIndex = e;
+				},
+				
+				// 附加信息相关
+				WXSignInSwitch(e){
+					console.log(e);
+				},
+				screenSwitch(e){
+					console.log(e);
+				},
+				introductionSwitch(e){
+					console.log(e);
+				},
+				scheduleSwitch(e){
+					console.log(e);
+				},
+				
+				// 编辑删除
+				editClick(e){
+					var that = this;
+					if(that.isEdit == true){
+						that.isEdit = false;
+					}else{
+						that.isEdit = true;
+					}
+				},
+				deleteClick(e){
+					console.log('删除会议');
+				},
+				
+				jianjieClick(e){
+					var that = this;
+					vant.ImagePreview(['../../img/linshi_jianjie@2x.png']);
+				},
+				riChengClick(e){
+					vant.ImagePreview(['../../img/linshi_richeng@2x.png']);
+				},
+				onLineClick(e){
+					window.location.href='../monitor/index.html?detail=true';
+				},
+				signedClick(e){
+					window.location.href='../signed/index.html';
+				},
+				
+				showZhiBoClick(e){
+					var that = this;
+					that.showZhiBoQR = true;
+				},
+				showMeetingClick(e){
+					var that = this;
+					that.showMeetingQR = true;
+				},
+				showAcademicClick(e){
+					var that = this;
+					that.showAcademic = true;
+				},
+				closeAcademicClick(){
+					var that = this;
+					that.showAcademic = false;
+				},
+			},
+			computed: {},
+		})
+	</script>
+</html>

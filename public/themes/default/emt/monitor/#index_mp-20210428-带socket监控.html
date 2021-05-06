@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>iWE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="__STATIC__/emt/utils/vant-2.10/index.css">
+<script src="__STATIC__/emt/utils/vue-2.6/vue.min.js"></script>
+<script src="__STATIC__/emt/utils/vant-2.10/vant.min.js"></script>
+<link href="__TMPL__/emt/monitor/index.css" rel="stylesheet" type="text/css" />
+<link href="__STATIC__/emt/utils/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/emt/utils/jquery/jquery.js"></script>
+</head>
+<body>
+<div class="app">
+  <van-nav-bar left-arrow @click-left="onClickLeft" title="在线情况"></van-nav-bar>
+  <div class="content">
+    <div class="top_view">
+      <div class="title_view">
+        此页面在线情况仅供参考，真实在线情况以PC端直播工具呈现为准
+      </div>
+      <div class="online_number">
+        当前在线: <span style="color: #2A918B;">{{onlinenum}}</span>/{{linenum}}人
+      </div>
+    </div>
+    <div class="list_view">
+      <div class="list_row" v-for="(item, index) in onlinelist" :key="index">
+        <div class="icon">
+          <img :src="item.thumb" class="icon_avatar" />
+          <img src="__STATIC__/emt/img/icon_online@2x.png" class="icon_status" />
+        </div>
+        <div class="details">
+          <div class="name">{{item.username}}</div>
+          <div class="hospital">
+            {{item.hospital}}
+          </div>
+        </div>
+      </div>
+      
+      <div class="list_row filter" v-for="(item, index) in outlinelist" :key="index">
+        <div class="icon">
+          <img :src="item.thumb" class="icon_avatar" />
+          <img src="__STATIC__/emt/img/icon_offline@2x.png" class="icon_status" />
+        </div>
+        <div class="details">
+          <div class="name" style="color: #888888;">{{item.username}}</div>
+          <div class="hospital">
+            {{item.hospital}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="__STATIC__/emt/utils/base.js" type="text/javascript" charset="utf-8"></script>
+<script>
+new Vue({
+  el: '.app',
+  data: {
+    onlinenum : '',
+    linenum : '',
+    onlinelist : [],
+    outlinelist : [],
+  },
+  created:function(){
+    let that = this;
+    that.loadData();
+    //每15秒执行一次
+    // window.setInterval(function() {
+    //   setTimeout(() => {
+    //     that.loadData();
+    //   }, 0);
+    // }, 10000);
+    window.setInterval(function() {
+      window.location.reload();
+    }, 15000);
+  },
+  methods: {
+    loadData() {
+      let that = this;
+      let mid = '{$mid}';
+      $.ajax({
+        url: '{:url("emt/monitor/show_mp")}',
+        type: "POST",
+        data: {id:mid},
+        dataType: "json",
+        success: function (res) {
+          that.onlinenum = res.data.onlinenum;
+          that.linenum = res.data.linenum;
+          that.onlinelist = res.data.onlines;
+          that.outlinelist = res.data.outlines;
+        }
+      });
+    },
+    onClickLeft(e) {
+      window.location.href = 'https://mce.nuohenuode.cn/emt/meeting/detail?id={$meeting.id}';
+    }
+  },
+  computed: {}
+});
+</script>
+</body>
+</html>

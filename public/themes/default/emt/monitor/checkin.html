@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>iWE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="/static/emt/utils/vant-2.10/index.css">
+<script src="/static/emt/utils/vue-2.6/vue.min.js"></script>
+<script src="/static/emt/utils/vant-2.10/vant.min.js"></script>
+<link href="/themes/default/emt/monitor/index.css" rel="stylesheet" type="text/css" />
+<link href="/static/emt/utils/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/emt/utils/jquery/jquery.js"></script>
+<style type="text/css">
+.top_view{min-height:40px;}
+.list_view{margin-top:90px;}
+.icon_avatar{border-radius:12px;}
+.watermark{
+  z-index:9999;
+  position:fixed;
+  top:-20px;
+  left:-160px;
+  white-space:nowrap;
+  font-size:24px;
+  line-height:130px;
+  font-weight:500;
+  color:rgba(0,0,0,0.3);
+  transform:rotate(-30deg); 
+  pointer-events: none;
+}
+
+.hospital {
+	color: #888888;
+	font-size: 14px;
+	margin-top: 4px;
+}
+
+.filter {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray;
+	filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+}
+
+
+.title {
+	color: #888888;
+	font-size: 14px;
+	margin-top: 2px;
+}
+
+.time {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.time_top {
+	color: #888888;
+	font-size: 13px;
+	margin-top: 2px;
+}
+
+.time_bottm {
+	color: #888888;
+	font-size: 13px;
+	margin-top: 2px;
+}
+
+.target {
+	margin-left: 4px;
+	font-size: 12px;
+	background-color: #2B928C;
+	color: #ffffff;
+	padding: 1px 9px;
+	border-radius: 4px;
+}
+</style>
+</head>
+<body>
+		<div class="app">
+<div class="watermark">
+  ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　ABCD　　　
+</div>
+			<van-nav-bar left-arrow @click-left="onClickLeft" title="签到明细"></van-nav-bar>
+			<div class="content">
+				<div class="top_view">
+					<div class="online_number">
+						当前已签到：<span style="color: #2A918B;">22人
+					</div>
+				</div>
+				<div class="list_view">
+
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/EK8FZ09JfUIBibvwcgPjSbgQSrYiaqnzHrb0dOlqGDPH6jhrlgokv3Sk5Lb9plibHAIibOeqlREjickgVjmEjYRJygQ/132"
+								class="icon_avatar"> <img src="/static/emt/img/icon_online@2x.png" class="icon_status">
+						</div>
+						<div class="details">
+							<div class="name">李娜 <span class="target">目标</span></div>
+							<div class="hospital">
+								汉中市第二人民医院
+							</div>
+							<div class="title">
+								心血管内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/qUhNOLZ4M1ncv5wppl4pW28J8OicibGpaHZcw0qGTtoMtaqJvPPIvGNVqH064r2iaEibjFcjjdsXlt0yrX2E3Z4osg/132"
+								class="icon_avatar">
+						</div>
+						<div class="details">
+							<div class="name">任宝恒</div>
+							<div class="hospital">
+								陕西省汉中3201医院
+							</div>
+							<div class="title">
+								干部科 / 主治医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoIYL7T3TVarh53V1y3jWar8VFyA32libia7E3LAJSdYGUkCqDa08wF0zzLEb5BgicI2C8bef9t9F5FA/132"
+								class="icon_avatar">
+						</div>
+						<div class="details">
+							<div class="name">黄俊华</div>
+							<div class="hospital">
+								国药东风茅箭医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/L6fKxFFiazAbAvupHXJicoo6ZrMThlc8lxYglheWyHhndLuoXWxiaJVK0iaETpB3CWedNXicOJZULTbYpQibkOS9Rpkw/132"
+								class="icon_avatar"> <img src="/static/emt/img/icon_online@2x.png" class="icon_status">
+						</div>
+						<div class="details">
+							<div class="name">马红娥 <span class="target">目标</span></div>
+							<div class="hospital">
+								陕西省汉中市略阳县人民医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/g4FdC1Kq6ZuNiau3X4oVSn99bYkvcibbWrzIm94MYmfCJcHmSnbicSXSJjkpNHhuVyZibXObnb0s9hpmYib6BiahMnwg/132"
+								class="icon_avatar">
+						</div>
+						<div class="details">
+							<div class="name">李洪霞</div>
+							<div class="hospital">
+								泰来县人民医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/6fwwN6qYh8hGTUckovzib630EgHwWBvziakn2hTGpyST7HQ3Yxiar29yOyjLFJBjJ1MnCSDfAhR8kS9qKZ7fE1JNA/132"
+								class="icon_avatar"> <img src="/static/emt/img/icon_online@2x.png" class="icon_status">
+						</div>
+						<div class="details">
+							<div class="name">王利兵 <span class="target">目标</span></div>
+							<div class="hospital">
+								汉中市第二人民医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ6f6xzibESyia34icWaicx7wHOX9kDEA78AnnOPicNquibZNULQ8R8diaqVQD3lVic5ZSzTbgu6kEUibfls7Q/132"
+								class="icon_avatar">
+						</div>
+						<div class="details">
+							<div class="name">付爱华</div>
+							<div class="hospital">
+								金昌市中医医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLFcXkVliaLrA0xgsSxJW9RxHWHK0PLP72eCJ4CWAQLxz9aBNjZPTWcO29ZE4yiaxV2hFce3WKWTXRA/132"
+								class="icon_avatar"> <img src="/static/emt/img/icon_online@2x.png" class="icon_status">
+						</div>
+						<div class="details">
+							<div class="name">杨永彦 <span class="target">目标</span></div>
+							<div class="hospital">
+								汉中市第二人民医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img src="http://iwe.itangyi.com/Public/imgs/nothumb.jpg" class="icon_avatar">
+							<img src="/static/emt/img/icon_online@2x.png" class="icon_status">
+						</div>
+						<div class="details">
+							<div class="name">谢子莎 <span class="target">目标</span></div>
+							<div class="hospital">
+								陕西省汉中3201医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img src="https://mcecdn.nuohenuode.cn/static/images/headicon.png"
+								class="icon_avatar"> <img src="/static/emt/img/icon_online@2x.png" class="icon_status">
+						</div>
+						<div class="details">
+							<div class="name">刘川宁 <span class="target">目标</span></div>
+							<div class="hospital">
+								汉中市第二人民医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoAdKKeKhZjjDup99IVtfK2ES1JyU330z7PlbsjA71wmI4EI1331QRibDFnF8Xhu5nKgR4TMibplPaw/132"
+								class="icon_avatar"> <img src="/static/emt/img/icon_online@2x.png" class="icon_status">
+						</div>
+						<div class="details">
+							<div class="name">沈奎玲 <span class="target">目标</span></div>
+							<div class="hospital">
+								江苏省宿迁市宿城区蔡集镇医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIzwcuicOJ7TYiaJibbJn5VCPsEBLEV9Xz9iavUwcQmPGdZ2qanU572MZRVbQquaUlziclZF4AXqZpEmibg/132"
+								class="icon_avatar">
+						</div>
+						<div class="details">
+							<div class="name">王文豹</div>
+							<div class="hospital">
+								勉县秦和医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img src="https://mcecdn.nuohenuode.cn/static/images/headicon.png" class="icon_avatar">
+						</div>
+						<div class="details">
+							<div class="name" style="color: rgb(136, 136, 136);">董劲
+							</div>
+							<div class="hospital">
+								陕西省汉中市中心医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKe4jENRCNiaqfHrzIWqcyEh4o8Tp21YSjoIsMOcFH4j0fDiaw0w62YaTib99VKx1JkdT6cHfbmQqyFQ/132"
+								class="icon_avatar">
+						</div>
+						<div class="details">
+							<div class="name" style="color: rgb(136, 136, 136);">曾荣春
+							</div>
+							<div class="hospital">
+								禄劝彝族苗族自治县第一人民医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img src="http://iwe.itangyi.com/Public/imgs/nothumb.jpg" class="icon_avatar">
+						</div>
+						<div class="details">
+							<div class="name" style="color: rgb(136, 136, 136);">鲁乃宏
+							</div>
+							<div class="hospital">
+								陕西省汉中市中心医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/qlhXicK5c55m7e7biaBK42vic4Nj1bUlV6LbblJ1cU3FcdDOSxEATqV56DhH8AybqCaHRkgOmJEVsHqicqRhl4ib8bA/132" class="icon_avatar">
+						</div>
+						<div class="details">
+							<div class="name" style="color: rgb(136, 136, 136);">李春燕 
+							</div>
+							<div class="hospital">
+								湘潭市二医院
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+					<div class="list_row">
+						<div class="icon"><img
+								src="https://thirdwx.qlogo.cn/mmopen/vi_32/vOWp3j5psrN8tDRJQsoLiaCDeVx2k0CGnuXcKs0jY8wWicMQvxOnWgFvnjZ4pDon6h2d3P3lQJDxrp6QHuqpEdfQ/132"
+								class="icon_avatar">
+						</div>
+						<div class="details">
+							<div class="name" style="color: rgb(136, 136, 136);">何光艳
+							</div>
+							<div class="hospital">
+								昆明市世纪城社区卫生服务中心
+							</div>
+							<div class="title">
+								内科 / 住院医师
+							</div>
+						</div>
+						<div class="time">
+							<div class="time_top">2021-04-26</div>
+							<div class="time_bottm">16:03</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="/static/emt/utils/base.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			new Vue({
+				el: '.app',
+				data: {
+					onlinenum: '',
+					linenum: '',
+					onlinelist: [],
+					outlinelist: [],
+				},
+				created: function() {
+					let that = this;
+					// that.loadData();
+					//每15秒执行一次
+					// window.setInterval(function() {
+					//   setTimeout(() => {
+					//     that.loadData();
+					//   }, 0);
+					// }, 10000);
+				},
+				methods: {
+					loadData() {
+						let that = this;
+						let mid = '346856';
+						$.ajax({
+							url: '/emt/monitor/show_mp.html',
+							type: "POST",
+							data: {
+								id: mid
+							},
+							dataType: "json",
+							success: function(res) {
+								
+								that.onlinenum = res.data.onlinenum;
+								that.linenum = res.data.linenum;
+								that.onlinelist = res.data.onlines;
+								that.outlinelist = res.data.outlines;
+							}
+						});
+					},
+					onClickLeft(e) {
+						window.location.href = 'https://mce.nuohenuode.cn/emt/meeting/detail?id=90513';
+					}
+				},
+				computed: {}
+			});
+		</script>
+	</body>
+</html>

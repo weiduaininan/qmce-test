@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>iWE</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__STATIC__/emt/utils/vant-2.10/index.css">
+		<script src="__STATIC__/emt/utils/vue-2.6/vue.min.js"></script>
+		<script src="__STATIC__/emt/utils/vant-2.10/vant.min.js"></script>
+		<link href="__TMPL__/emt/signed/index.css" rel="stylesheet" type="text/css" />
+		<link href="__STATIC__/emt/utils/base.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="__STATIC__/emt/utils/jquery/jquery.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<van-nav-bar left-arrow @click-left="onClickLeft" title="签署记录"></van-nav-bar>
+			<div class="content">
+				<div class="top_view">
+					<div class="online_number">
+						当前共: <span style="color: #2A918B;">{{totalCount}}</span> 条签署记录
+					</div>
+				</div>
+				<div class="list_view">
+					<div class="signed_title_row">
+						<div class="signed_name">姓名</div>
+						<div class="signed_hospital">医院</div>
+						<div class="signed_type">类型</div>
+						<div class="signed_time">签署日期</div>
+					</div>
+					<div class="list_row" v-for="(item, index) in itemlist" :key="index">
+						<div class="icon">
+							<img :src="item.thumb" class="icon_avatar" />
+						</div>
+						
+						<div class="name" style="width: 55px;">{{item.username}}</div>
+						<div class="hospital">
+							{{item.hospital}}
+						</div>
+						<div class="type" v-if="item.agreement == 'online'">
+							<img src="__STATIC__/emt/img/icon_yun_online@2x.png" class="type_icon" />
+							<div class="type_title" style="color: #3C5AEB;">线上</div>
+						</div>
+						<div class="type" v-if="item.agreement != 'online'">
+							<img src="__STATIC__/emt/img/icon_ditu_offline@2x.png" class="type_icon" />
+							<div class="type_title" style="color: #2A918B;">线下</div>
+						</div>
+						<div class="time">
+							{{item.createtimes}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="__STATIC__/emt/utils/base.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			new Vue({
+				el: '.app',
+				data: {
+					itemlist: [],
+          totalCount: 0
+				},
+				created:function(){
+					let that = this;
+					that.loadData();
+				},
+				methods: {
+					loadData(){
+						let that = this;
+						let mid = '{$mid}';
+						$.ajax({
+							url: '{:url("emt/agreement/signed")}',
+							type: "POST",
+							data: {id:mid},
+							dataType: "json",
+							success: function (res) {
+								that.itemlist = res.data;
+								that.totalCount = res.data.length;
+							}
+						});
+					},
+					onClickLeft(e){
+						let calendar = sessionStorage.getItem('calendar');
+						if (calendar == 'true') {
+							window.location.href = "{:url('emt/index/index',['type'=>'calendar'])}"
+						} else {
+							window.location.href = "{:url('emt/index/index',['type'=>'list'])}"
+						}
+					}
+				},
+				computed: {},
+			})
+		</script>
+	</body>
+</html>

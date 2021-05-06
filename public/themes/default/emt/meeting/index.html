@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>iWE</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__STATIC__/emt/utils/vant-2.10/index.css">
+		<script src="__STATIC__/emt/utils/vue-2.6/vue.min.js"></script>
+		<script src="__STATIC__/emt/utils/vant-2.10/vant.min.js"></script>
+		<link href="__TMPL__/emt/meeting/index.css" rel="stylesheet" type="text/css" />
+		<link href="__STATIC__/emt/utils/base.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="__STATIC__/emt/utils/jquery/jquery.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<!-- <van-nav-bar title="首页"></van-nav-bar> -->
+			<div class="content">
+				<!-- 搜索 -->
+				<van-search v-model="searchValue" show-action placeholder="短码 / AMS码 / 名称 / 城市 / 创建者" @search="onSearch" background="#D9D9D9">
+					<template #action>
+						<div @click="onSearch">搜索</div>
+					</template>
+				</van-search>
+				
+				<!-- 日期 -->
+				<div class="date_view">
+					<img src="__STATIC__/emt/img/icon_left@2x.png" class="icon_left" @click="showPopup" />
+					<div class="date_title">
+						{{timeFormat(currentDate,2)}}
+					</div>
+					<img src="__STATIC__/emt/img/icon_right@2x.png" class="icon_right" @click="showPopup" />
+				</div>
+				<!-- 日期弹出 -->
+				<van-popup v-model="showDate" position="bottom" :style="{ height: '40%' }" duration="0.1">
+					<van-datetime-picker v-model="currentDate" type="year-month" title="选择年月" :min-date="minDate" :max-date="maxDate" :formatter="formatter" @confirm="dateConfirm"  @cancel="dateCancel" />
+				</van-popup>
+
+				<!-- list -->
+				<div class="cardList">
+          <div v-if="!(data.length > 0)" class="content_container_no">
+            <img src="__STATIC__/emt/img/none@2x.png"/>
+            <div class="content_container_no_Text">暂无数据</div>
+          </div>
+					<div v-else class="card" v-for="(item, index) in data" :key="index">
+						<div class="card_top">
+							<div class="flag">
+								<div v-if="item.emt == 1" class="flag_emeeting" :style="item.emt == 1 ? 'background-color: #3664E5;' : 'background-color: #B2B2B2;' ">
+									E-Meeting
+								</div>
+								<div v-if="item.hj == 1" class="flag_other" style="background-color: #D2ECF8;color: #3B97DE;">
+									患教
+								</div>
+								<div v-if="item.sd == 1" class="flag_other" style="background-color: #D2E6F3;color: #005AD2;">
+									S&D
+								</div>
+								<div v-if="item.meeting_requestid > 0 && item.meeting_businesscode.substr(0,3) == 'AMS'" class="flag_other" style="background-color: #D2EBEA;color: #2A918B;">
+									AMS
+								</div>
+								<div v-if="(item.meeting_requestid > 0 && item.meeting_businesscode.substr(0,3) == 'GSA') || item.gsa == 1" class="flag_other" style="background-color: #ebd4ef;color: #9c26b0;">
+									GSA
+								</div>
+								<div v-if="(item.meeting_requestid == 0 && item.hj == 0 && item.sd == 0 && item.gsa == 0) || (item.hj == 0 && item.sd == 0 && item.gsa == 0 && item.meeting_requestid > 0 && item.meeting_businesscode.substr(0,3) != 'AMS' && item.meeting_businesscode.substr(0,3) != 'GSA')" class="flag_other" style="background-color: #e7ebed;color: #8799a3;">
+									自定义
+								</div>
+							</div>
+			
+							<div class="other"  @click="showOtherPopup(item)">
+								<img src="__STATIC__/emt/img/icon_ellipsis@2x.png" class="onterImg" />
+							</div>
+						</div>
+						<div class="card_center" @click="cardDetail(item)">
+							<img :src="item.meeting_inviteimg" class="card_img" />
+							<div class="card_center_right">
+								<div class="card_title">
+									{{item.meeting_title}}
+								</div>
+								<div class="number">
+									{{item.meeting_businesscode}}
+								</div>
+								<div class="meeting_time">
+									会议时间：{{item.meeting_planningstartdate}}
+								</div>
+							</div>
+						</div>
+						<!-- <div class="card_bottom">
+							<div class="invite" @click="showAcademicClick">
+								学术邀请函
+							</div>
+							<div class="listeners_qr" @click="listenersQRClick">
+								听众二维码
+							</div>
+						</div> -->
+					</div>
+				</div>
+				
+				<!-- 省略号弹出 -->
+				<van-popup v-model="showOther" round position="bottom"  duration="0.1">
+					
+					<div class="otherView">
+						<div class="otherRow" @click="otherRowClick(0)" v-if="mitem.emt == 1">
+							<img :src="otherIndex == 0 ? '__STATIC__/emt/img/qr_tingzhong_selected.png' : '__STATIC__/emt/img/qr_tingzhong.png' " :class="otherIndex == 0 ? 'other_icon1' : 'other_icon'"  />
+							<div :class="otherIndex == 0 ? 'otherTitle_selected' :'otherTitle' ">
+								听众二维码
+							</div>
+						</div>
+						<div class="otherRow" @click="otherRowClick(1)" v-if="mitem.emt == 1">
+							<img :src="otherIndex == 1 ? '__STATIC__/emt/img/icon_video_sec@2x.png'  : '__STATIC__/emt/img/icon_download@2x.png'"  :class="otherIndex == 1 ? 'other_icon1' : 'other_icon'" />
+							<div :class="otherIndex == 1 ? 'otherTitle_selected' :'otherTitle' ">
+								会议直播
+							</div>
+						</div>
+						<div class="otherRow" @click="otherRowClick(2)" v-if="mitem.emt == 1 && mitem.sd !== 1 && mitem.hj !== 1">
+							<img :src="otherIndex == 2 ? '__STATIC__/emt/img/icon_online_sec@2x.png'  : '__STATIC__/emt/img/icon_see@2x.png'" :class="otherIndex == 2 ? 'other_icon1' : 'other_icon'" />
+							<div :class="otherIndex == 2 ? 'otherTitle_selected' :'otherTitle' ">
+								在线情况
+							</div>
+						</div>
+						
+						<div class="otherRow" @click="otherRowClick(3)" v-if="mitem.sd !== 1 && mitem.hj !== 1">
+							<img :src="otherIndex == 3 ? '__STATIC__/emt/img/yaoqing_selected.png' : '__STATIC__/emt/img/yaoqing.png' " :class="otherIndex == 3 ? 'other_icon1' : 'other_icon'"  />
+							<div :class="otherIndex == 3 ? 'otherTitle_selected' :'otherTitle' ">
+								学术邀请函
+							</div>
+						</div>
+						
+						<div class="otherRow" @click="otherRowClick(4)" v-if="mitem.sd !== 1 && mitem.hj !== 1">
+							<img :src="otherIndex == 4 ? '__STATIC__/emt/img/qianshu_selected.png'  : '__STATIC__/emt/img/qianshu.png'" :class="otherIndex == 4 ? 'other_icon1' : 'other_icon'" />
+							<div :class="otherIndex == 4 ? 'otherTitle_selected' :'otherTitle' ">
+								签署记录
+							</div>
+						</div>
+						
+						<div class="otherRow" @click="otherRowClick(5)" v-if="mitem.emt == 1">
+							<img :src="otherIndex == 5 ? '__STATIC__/emt/img/icon_quit_sec@2x.png'  : '__STATIC__/emt/img/icon_comein@2x.png'" :class="otherIndex == 5 ? 'other_icon1' : 'other_icon'" />
+							<div :class="otherIndex == 5 ? 'otherTitle_selected' :'otherTitle' ">
+								签到表
+							</div>
+						</div>
+						
+						<div class="otherRow" @click="otherRowClick(6)" style="border-bottom: 0px solid #EEEEEE;" v-if="mitem.meeting_level == 1">
+							<img :src="otherIndex == 6 ? '__STATIC__/emt/img/icon_transfer@2x.png' : '__STATIC__/emt/img/icon_turn_no@2x.png' " :class="otherIndex == 6 ? 'other_icon1' : 'other_icon'"  />
+							<div :class="otherIndex == 6 ? 'otherTitle_selected' :'otherTitle' ">
+								会议转让
+							</div>
+						</div>
+
+					</div>
+				</van-popup>
+				
+				<!-- 会议转让弹出 -->
+				<van-popup v-model="showTurn" round position="bottom" :style="{ height: '50%' }" duration="0.1">
+					<div class="turn_title">
+						会议转让给
+					</div>
+					<div class="turn_content">
+						<van-cell-group>
+						  <van-field v-model="turnValue" label="文本" placeholder="请输入接收者initial" />
+						</van-cell-group>
+						<van-button round type="info" style="margin-top: 20%;" @click="turnMeeting">确 认</van-button>
+					</div>
+				</van-popup>
+					
+				<!-- 签到表下载弹出 -->
+				<van-dialog v-model="showDownload" confirm-button-text="好的" confirm-button-color="#2A918B" close-on-click-overlay="true">
+				    <div class="downloadView">
+				    	<div class="download_title">
+				    		<img src="__STATIC__/emt/img/icon_tishi@2x.png" class="download_tishi" />
+				    		<div class="download_title_des">
+				    			提示信息
+				    		</div>
+				    	</div>
+				    	<div class="download_centent_des">
+				    		<div class="download_row" style="color:#666;padding-bottom:30px;">
+				    			请在电脑端iWE中查看
+				    		</div>
+				    	</div>
+              <!--
+				    	<div class="download_centent_des">
+				    		<div class="download_row1">
+				    			<img src="__STATIC__/emt/img/icon_tishi@2x.png" class="download_tishi" />
+				    			<div class="download_row1_des">
+				    				请特别注意，不要使用系统中正式申请审批的会议进行测试！
+				    			</div>
+				    		</div>
+				    		<div class="download_row2">
+				    			关于电子签到表格的几点说明：
+				    		</div>
+				    		<div class="download_row3">
+				    			<div class="number1">1</div>
+				    			<div class="row_detail">
+				    				电子签到表中标记  <span class="span_yellow">黄色的参会人</span> 有可能接受后续的线下身份核实；
+				    			</div>
+				    			
+				    		</div>
+				    		<div class="download_row4">
+				    			<div class="number1">2</div>
+				    			<div class="row_detail">
+				    				电子签到表中标记  <span class="span_red">红色的参会人</span> 由于未按照规定方式参加会议，不会被计入有效参会人；
+				    			</div>
+				    			
+				    		</div>
+				    		<div class="download_row5">
+				    			
+				    		</div>
+				    	</div>
+				    	-->
+				    </div>
+				</van-dialog>
+				<!-- <van-popup v-model="showDownload" closeable round  :style="{ height: '82%'}" duration="0.1">
+					
+				</van-popup> -->
+				
+				<!-- 学术邀请函弹出 -->
+				<!-- <van-popup v-model="showAcademic" round :style="{height: '80%'}" style="width: 90%;border-radius: 0px;" duration="0.1">
+					<div class="bg_qr_view">
+						<div class="bg_white">
+							<van-button type="info" style="margin: 10px;min-width: 140px;margin-top: 30px;border-radius: 20px;min-height: 30px;">30有约 · 区域云峰会</van-button>
+							<div class="description">请长按保存二维码</div>
+							<div class="qrbg">
+								<img src="__STATIC__/emt/img/qrcode@2x.png" class="qr" >
+							</div>
+						</div>
+					</div>
+					<img src="__STATIC__/emt/img/icon_close@2x.png" class="closeImg" @click="closeAcademicClick" />
+				</van-popup> -->
+				
+				<!-- 听众二维码弹出 -->
+				<van-popup v-model="showQR" round position="bottom"  duration="0.1">
+					<div class="qr_title">
+						会议信息转发
+					</div>
+					<div class="qr_detail">
+						<div class="qr_detail_row">
+							<img src="__STATIC__/emt/img/icon_time@2x.png" class="qr_detail_row_time" style="width: 20px;" />
+							<div class="qr_detail_row_title">会议时间：{{mitem.mdate}}  {{mitem.start}}-{{mitem.end}}</div>
+						</div>
+						<div class="qr_detail_row">
+							<img src="__STATIC__/emt/img/icon_local@2x.png" class="qr_detail_row_time" style="width: 14px;margin-left: 4px;" />
+							<div class="qr_detail_row_title">会议地点：{{mitem.meeting_activitycity}} {{mitem.meeting_activityaddress}}</div>
+						</div>
+					<!-- 	<div class="qr_detail_row">
+							<img src="__STATIC__/emt/img/icon_duanma@2x.png" class="qr_detail_row_time" style="width: 20px;margin-left: 0px;" />
+							<div class="qr_detail_row_title">会议短码：admin29825</div>
+						</div> -->
+					</div>
+					<div class="qr_view_img" style="margin-bottom: 20px;">
+						<img :src="mitem.emt_signqrcode" class="qr_img" />
+						<van-button round type="info" style="min-width: 140px;margin-top: 30px;">长按保存二维码</van-button>
+					</div>
+				</van-popup>
+				
+				
+				<!-- 创建会议 -->
+				<div class="create" @click="createClick">
+					<img src="__STATIC__/emt/img/icon_create_sm@2x.png" class="create_icon" />
+					<!-- <div class="create_title">
+						新建会议
+					</div> -->
+				</div>
+				
+				<!-- 创建会议弹出 -->
+				<van-popup v-model="showCreate" round position="bottom" :style="{ height: '55%' }" duration="0.1">
+					<div class="otherView">
+            <!--
+						<div class="otherRow" style="height: 18%;margin-top: 10px;" @click="createItmeClick(3)">
+							<div :class="createIndex == 0 ? 'otherTitle_selected' :'otherTitle' ">
+								新建RemoteCall
+								<div style="font-size: 13px;margin-top: 6px;color: #2A918B;">一对一远程拜访</div>
+							</div>
+						</div>
+						-->
+						<div class="otherRow" style="height: 18%;" @click="createItmeClick(4)">
+							<div :class="createIndex == 1 ? 'otherTitle_selected' :'otherTitle' ">
+								新建GSA会议
+								<div style="font-size: 13px;margin-top: 6px;color: #2A918B;">科室会，无讲课费</div>
+							</div>
+						</div>
+						
+						<div class="otherRow" style="height: 18%;" @click="createItmeClick(2)">
+							<div :class="createIndex == 2 ? 'otherTitle_selected' :'otherTitle' ">
+								新建线上患教
+								<div style="font-size: 13px;margin-top: 6px;color: #2A918B;">目标观众为患者，无法获取参会数据</div>
+							</div>
+						</div>
+						
+						<div class="otherRow" style="height: 18%;" @click="createItmeClick(1)">
+							<div :class="createIndex == 3 ? 'otherTitle_selected' :'otherTitle' ">
+								新建S&D会议
+								<div style="font-size: 13px;margin-top: 6px;color: #2A918B;">赞助与捐赠项目会议</div>
+							</div>
+						</div>
+						
+						<div class="otherRow" style="height: 18%;border-bottom: 0px solid #EEEEEE;" @click="createItmeClick(0)">
+							<div :class="createIndex == 4 ? 'otherTitle_selected' :'otherTitle' ">
+								新建自定义会议
+								<div style="font-size: 13px;margin-top: 6px;color: #2A918B;">其他会议</div>
+							</div>
+						</div>
+					</div>
+				</van-popup>
+				<!-- 日历 -->
+				<div class="calendar" @click="calendarClick">
+					<img src="__STATIC__/emt/img/icon_calendar.png" class="calendar_icon" />
+					<!-- <div class="create_title">
+						日历模式
+					</div> -->
+				</div>
+			</div>
+
+		</div>
+		<script src="__STATIC__/emt/utils/base.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			new Vue({
+				el: '.app',
+				data: {
+					searchValue: '',
+					showDate: false,
+					showOther: false,
+					otherIndex: -1,
+					createIndex:-1,
+					showTurn: false,
+					turnValue:'',
+					showDownload: false,
+					showAcademic:false,
+					showQR:false,
+					minDate: new Date(2020, 0, 1),
+					maxDate: new Date(2030, 10, 1),
+					currentDate: new Date(),
+					showCreate:false,
+					type:0,
+					mitem:'',//展示弹出的临时变量
+					data:[]
+				},
+				created:function(e){
+					let that = this;
+					//console.log(that.currentDate)
+					sessionStorage.setItem('calendar', false);
+					if(sessionStorage.getItem('mindexdate')){
+						let mindexdate = sessionStorage.getItem('mindexdate');
+						that.currentDate =new Date(mindexdate);
+						sessionStorage.removeItem('mindexdate');
+					}
+					that.loadData();
+				},
+				methods: {
+					onSearch(e) {
+						var that = this;
+						that.loadData();
+						//console.log(that.searchValue);
+					},
+					otherRowClick(e) {
+						var that = this;
+						that.otherIndex = e;
+						if(e == 0){
+							that.getEmtInfo()
+						}else if(e == 1){
+							sessionStorage.setItem('cindexdate',that.seldate);
+							sessionStorage.setItem('cindextype',that.seltype);
+							let baseurl = '{$mp_baseurl}'
+							setTimeout(`javascript:location.href='${baseurl}${that.mitem.meeting_id}&qy=1'`, 100);
+						}else if(e == 2){
+							sessionStorage.setItem('cindexdate',that.seldate);
+							sessionStorage.setItem('cindextype',that.seltype);
+							let mid = that.mitem.meeting_id;
+							let url ="{:url('emt/monitor/show',['id'=>'meeting_id'])}";
+							url = url.replace("meeting_id",mid);
+							setTimeout(`javascript:location.href='${url}'`, 100);
+						}else if(e == 3){
+							sessionStorage.setItem('cindexdate',that.seldate);
+							sessionStorage.setItem('cindextype',that.seltype);
+							let mid = that.mitem.meeting_id;
+							let url ="{:url('emt/agreement/all',['id'=>'meeting_id'])}";
+							url = url.replace("meeting_id",mid);
+							setTimeout(`javascript:location.href='${url}'`, 100);
+						}else if(e == 4){
+							sessionStorage.setItem('cindexdate',that.seldate);
+							sessionStorage.setItem('cindextype',that.seltype);
+							let mid = that.mitem.meeting_id;
+							let url ="{:url('emt/agreement/signed',['id'=>'meeting_id'])}";
+							url = url.replace("meeting_id",mid);
+							setTimeout(`javascript:location.href='${url}'`, 100);
+						}else if(e == 5) {
+							that.showDownload = true;
+						}else if(e == 6) {
+							that.turnValue = '';
+							that.showTurn = true;
+						}
+					},
+					turnMeeting(){
+						let that = this;
+						let mid = that.mitem.meeting_id;
+						let initial = that.turnValue;
+						if(!initial){
+							vant.Toast.fail("请填写initial")
+							return;
+						}
+						$.ajax({
+							url: '{:url("emt/meeting/transfer")}',
+							type: "POST",
+							data: {id:mid,initial:initial},
+							success: function (res) {
+								if(res.code == '1'){
+									vant.Toast.success(res.msg)
+									that.showTurn = false;
+									that.showOther = false;
+									that.otherIndex = -1;
+									that.loadData();
+								}else{
+									vant.Toast.fail(res.msg)
+								}
+							}
+						});
+					},
+					showPopup() {
+						this.showDate = true;
+					},
+					showOtherPopup(item) {
+						var that = this;
+						that.mitem = item;
+            // console.log(item);
+						that.showOther = true;
+						that.createIndex = -1;
+					},
+					dateCancel(){
+						var that = this;
+						that.showDate = false;
+					},
+					dateConfirm(e){
+						//console.log(e)
+						let that = this;
+						that.currentDate = e
+						that.loadData();
+						that.showDate = false;
+					},
+					timeFormat(time,type) { // 时间格式化 2019-09
+						let year = time.getFullYear();
+						let month = time.getMonth() + 1;
+						if(type == 1){
+							return year + '-' + month;
+						}else{
+							return year + '年' + month + '月';
+						}
+					},
+					formatter(type, val) {
+						if (type === 'year') {
+							return `${val}年`;
+						} else if (type === 'month') {
+							return `${val}月`;
+						}
+						return val;
+					},
+					calendarClick(e){
+						sessionStorage.setItem('calendar', true);
+						window.location.href="{:url('emt/index/index',['type'=>'calendar'])}";
+					},
+					showAcademicClick(e){
+						var that = this;
+						that.showAcademic = true;
+					},
+					closeAcademicClick(){
+						var that = this;
+						that.showAcademic = false;
+					},
+					listenersQRClick(){
+						var that = this;
+						that.showQR = true;
+					},
+					createClick(){
+						var that = this;
+						that.showCreate = true;
+					},
+					createItmeClick(e){
+						let that = this
+						sessionStorage.setItem('mindexdate',that.timeFormat(that.currentDate,1));
+						if(e == 0){
+							window.location.href="{:url('emt/meeting/add')}";
+						}else if(e == 1){
+							window.location.href="{:url('emt/sd_meeting/add')}";
+						}else if(e == 2){
+							window.location.href="{:url('emt/hj_meeting/add')}";
+						}else if(e == 4){
+							window.location.href="{:url('emt/gsa_meeting/add')}";
+						}
+					},
+					cardDetail(e){
+						let that = this
+						sessionStorage.setItem('mindexdate',that.timeFormat(that.currentDate,1));
+						let mid = e.meeting_id;
+						let url ="{:url('emt/meeting/detail',['id'=>'meeting_id'])}";
+						if(e.hj == '1'){
+							url ="{:url('emt/hj_meeting/detail',['id'=>'meeting_id'])}";
+						}else if(e.sd == '1'){
+							url ="{:url('emt/sd_meeting/detail',['id'=>'meeting_id'])}";
+						}else if(e.gsa == '1' || e.meeting_businesscode.substr(0,3) == 'GSA'){
+							url ="{:url('emt/gsa_meeting/detail',['id'=>'meeting_id'])}";
+						}else{
+							url ="{:url('emt/meeting/detail',['id'=>'meeting_id'])}";
+						}
+						url = url.replace("meeting_id",mid);
+						window.location.href = url;
+					},
+					//加载数据
+					loadData(){
+						let that = this;
+						let key = that.searchValue;
+						let date = that.timeFormat(that.currentDate,1);
+
+						$.ajax({
+							url: '{:url("emt/index/get_index_list")}',
+							type: "POST",
+							data: {key:key,date:date},
+							dataType: "json",
+							success: function (res) {
+								console.log(res.data)
+								that.data = res.data;
+							}
+						});
+					},
+					getEmtInfo(){
+						let that = this;
+						let type = '';
+						if(that.mitem.hj == '1'){
+							type = 'hj';
+						}else if (that.mitem.sd == '1'){
+							type = 'sd';
+						}else {
+							type = 'iwe';
+						}
+
+						$.ajax({
+							url: '{:url("emt/meeting/emt_binder")}',
+							type: "POST",
+							data: {meeting_id:that.mitem.meeting_id,type:type},
+							success: function (res) {
+								if(res.code == '1'){
+									that.mitem.emt_signqrcode = res.data.qrcode_url;
+								}
+								that.showQR = true;
+							}
+						});
+
+						// $.ajax({
+						// 	url: '{:url("emt/meeting/emt_binder")}',
+						// 	type: "POST",
+						// 	data: {meeting_id:that.mitem.meeting_id},
+						// 	success: function (res) {
+						// 		if(res.data.liveid) {
+						// 			that.mitem.emt_signqrcode = that.mitem.meeting_imgqcode
+						// 		}
+						// 		that.showQR = true;
+						// 		//console.log(that.mitem)
+						// 	}
+						// });
+					}
+				},
+				computed: {},
+			})
+		</script>
+	</body>
+</html>

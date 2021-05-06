@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>iWE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="__STATIC__/emt/utils/vant-2.10/index.css">
+<link href="__TMPL__/emt/monitor/index.css" rel="stylesheet" type="text/css" />
+<link href="__STATIC__/emt/utils/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="app">
+  <div class="van-nav-bar van-hairline--bottom">
+    <div class="van-nav-bar__content">
+      <div class="van-nav-bar__left"><a href="https://mce.nuohenuode.cn/emt/meeting/detail?id={$meeting.id}"><i class="van-icon van-icon-arrow-left van-nav-bar__arrow"></i></a></div>
+      <div class="van-nav-bar__title van-ellipsis">在线情况</div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="top_view">
+      <div class="title_view">
+        此页面在线情况仅供参考，真实在线情况以PC端直播工具呈现为准
+      </div>
+      <div class="online_number">
+        当前在线: <span style="color: #2A918B;"><?php echo count($onlines); ?> / <?php echo count($onlines) + count($offlines); ?> </span>人
+      </div>
+    </div>
+    <div class="list_view">
+    <?php
+    foreach($onlines as $user) {
+    ?>
+    <div class="list_row">
+      <div class="icon">
+        <img src="{$user.thumb}" class="icon_avatar"/>
+        <img src="__STATIC__/emt/img/icon_online@2x.png" class="icon_status"/>
+      </div>
+      <div class="details">
+        <div class="name">{$user.username}</div>
+        <div class="hospital">{$user.hospital}</div>
+      </div>
+    </div>
+    <?php
+    }
+    foreach($offlines as $user) {
+    ?>
+    <div class="list_row filter">
+      <div class="icon">
+        <img src="{$user.thumb}" class="icon_avatar"/>
+        <img src="__STATIC__/emt/img/icon_offline@2x.png" class="icon_status"/>
+      </div>
+      <div class="details">
+        <div class="name" style="color:#888888;">{$user.username}</div>
+        <div class="hospital">{$user.hospital}</div>
+      </div>
+    </div>
+    <?php
+    }
+    ?>
+    </div>
+  </div>
+
+</div>
+<script type="text/javascript" src="__STATIC__/emt/utils/jquery/jquery.js"></script>
+<script>
+$(function() {
+  window.setInterval(function() {
+    window.location.reload();
+  }, 20000);
+});
+</script>
+</body>
+</html>
